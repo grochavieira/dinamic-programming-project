@@ -9,7 +9,7 @@ export default function Header(props) {
       <ul>
         <li>
           <Link className={`${props.tabOne}`} to="/">
-            Troco de Moedas
+            Troco Mínimo de Moedas
           </Link>
         </li>
         <li>

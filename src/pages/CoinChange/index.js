@@ -23,6 +23,10 @@ export default function CoinChange() {
     let res = Number.MAX_VALUE;
 
     if (!isNaN(change) && change > 0 && coins.length > 0) {
+      coins = coins.map((coin) => parseInt(coin));
+      coins = coins.filter(
+        (coin, index) => coins.indexOf(coin) === index && coin <= change
+      );
       res = findMinCoins(coins, change);
     }
 
@@ -38,33 +42,24 @@ export default function CoinChange() {
   function findMinCoins(coins, change) {
     let savedResults = [];
     for (let i = 0; i <= change; i++) {
-      savedResults[i] = undefined;
+      savedResults[i] = 0;
     }
-    savedResults[0] = 1;
 
     for (let i = 1; i <= change; i++) {
-      let copyChange = i;
+      let currentChange = i;
       let bestCount = Number.MAX_VALUE;
-      for (let j = 0; j <= coins.length; j++) {
-        let count = 0;
-        copyChange = i;
-        if (coins[j] <= copyChange) {
-          if (copyChange - coins[j] === 0) {
-            copyChange = 0;
-            count++;
-          } else if (savedResults[copyChange - coins[j]] !== undefined) {
-            count = savedResults[copyChange - coins[j]] + 1;
-          }
+      for (let j = 0; j < coins.length; j++) {
+        if (coins[j] <= currentChange) {
+          let count = savedResults[currentChange - coins[j]] + 1;
+
           if (bestCount > count) {
             bestCount = count;
           }
         }
       }
-
-      if (bestCount !== 0) {
-        savedResults[i] = bestCount;
-      }
+      savedResults[i] = bestCount;
     }
+
     return savedResults[change];
   }
 
@@ -92,13 +87,13 @@ export default function CoinChange() {
           <Input
             value={requestedChange}
             onAction={setChangeValue}
-            name="Trocado Requisitado (N)"
+            name="Trocado Requisitado (V)"
             placeholder="Ex: 62"
           />
           <Input
             value={availableCoins}
             onAction={setCoinsValue}
-            name="Moedas Disponíveis (S)"
+            name="Moedas Disponíveis (C)"
             placeholder="Digite os valores separados por vírgula - Ex: 25, 16, 15, 4, 3, 1"
           />
           <Button onAction={() => handleSubmit()} />
