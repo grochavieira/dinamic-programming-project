@@ -272,7 +272,10 @@ Para resolver este problema por divisão e conquista, é necessário pegar o val
 </p>
   
 <p align = "justify">
- Para melhor visualizar essa solução por divisão e conquista, vamos utilizar o exemplo arr = {1, 1, 2, 3, 4} e X = 5, e visualizar a resolução pelo grafo abaixo:
+Para melhor visualizar essa solução por divisão e conquista, vamos utilizar o exemplo arr = {1, 1, 2, 3, 4} e X = 5, e visualizar a resolução pelo grafo abaixo:
 </p>
 
+<p align="center">
+  <img src="imgs/ex2/grafo1.png">
+</p>
 
