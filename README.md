@@ -354,7 +354,7 @@ Logo, é necessário armazenar esses valores para criar uma solução por progra
 ### Método 'bottom-up'
 
 <p align="justify">
-Para solucionar esse problema de forma eficiente, precisamos solucioná-lo primeiro por baixo, para depois ir caminhando até o problema que precisa ser resolvido utilizando os valores dos problemas já solucionados. Portanto, para resolver esse problema vamos utilizar o mesmo exemplo anterior, arr = {1, 1, 2, 3, 4} e X = 5, além disso, nós precisamos criar uma matriz com X colunas e N+1 linhas, na qual N seria o tamanho do vetor arr, zerando todos os seus elementos, com excessão de todas as colunas na posição 0:
+Para solucionar esse problema de forma eficiente, precisamos solucioná-lo primeiro por baixo, para depois ir caminhando até o problema que precisa ser resolvido utilizando os valores dos problemas já solucionados. Portanto, para resolver esse problema vamos utilizar o mesmo exemplo anterior, arr = {1, 1, 2, 3, 4} e X = 5, além disso, nós precisamos criar uma matriz com X colunas e N linhas, iniciando do 0, na qual N seria o tamanho do vetor arr, zerando todos os seus elementos, com excessão de todas as colunas na posição 0:
 </p>
 
 |  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
@@ -418,7 +418,9 @@ E assim nós vamos populando a matriz até chegar no último valor do vetor arr,
 | 4(3)  |  1  | 2   | 2   | 3   | 3   |  2  |
 | 5(4)  |  1  | 2   | 2   | 3   | 4   |  4  |
 
+<p align="justify">
 Dessa forma, se olharmos para a última linha e coluna do vetor, nós obtemos a solução do problema, que seria 4, já que os subconjuntos que formam o valor X = 5 são: {1, 4}, {1, 4}, {2, 3} e {1, 1, 3}, porém, ele também pode mostrar a quantidade de subconjuntos que formam os valores de 1-4 se olharmos para a última linha, como, por exemplo, o valor 4, que tem como saída 4, pois os vetores que formam ele seriam {4}, {3, 1}, {3, 1} e {1, 1, 2}. Além disso, é importante citar que o vetor arr não precisa estar ordenado para chegar nessa solução, como podemos ver abaixo no caos do vetor arr = {3, 1, 4, 2, 1}:
+</p>
 
 |  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
 | --- | --- | --- | --- | --- | --- | --- |
@@ -432,3 +434,73 @@ Dessa forma, se olharmos para a última linha e coluna do vetor, nós obtemos a 
 ### Algoritmo por Programação Dinâmica
 
 Agora vamos analisar o algoritmo por programação dinâmica:
+
+```javascript
+function countSumSubsets(arr, x) {
+  let matrix = [];
+
+  for (let i = 0; i <= arr.length; i++) {
+    matrix[i] = [];
+    for (let j = 0; j <= x; j++) {
+      if (j === 0) {
+        matrix[i][j] = 1;
+      } else {
+        matrix[i][j] = 0;
+      }
+    }
+  }
+
+  for (let i = 1; i <= arr.length; i++) {
+    for (let j = 1; j <= x; j++) {
+      if (j - arr[i - 1] >= 0) {
+        matrix[i][j] += matrix[i - 1][j - arr[i - 1]] + matrix[i - 1][j];
+      } else {
+        matrix[i][j] = matrix[i - 1][j];
+      }
+    }
+  }
+
+  return matrix[arr.length][x];
+}
+```
+<p align="justify">
+Primeiro nós temos a criação da matriz matrix e sua inicialização, populando todos os seus campos com o valor 0, com excessão das colunas que sejam iguais a 0:
+</p>
+
+```javascript
+let matrix = [];
+
+for (let i = 0; i <= arr.length; i++) {
+  matrix[i] = [];
+  for (let j = 0; j <= x; j++) {
+    if (j === 0) {
+      matrix[i][j] = 1;
+    } else {
+      matrix[i][j] = 0;
+    }
+  }
+}
+```
+<p align="justify">
+Após nós temos um laço que percorre todas as linhas da matriz, começando da linha 1, e todas as colunas, também iniciando da coluna 1, na qual, dentro do segundo laço é realizado o processo de popular a matriz, onde primeiro temos uma condição para verificar se a subtração da coluna j com o elemento do vetor arr[i - 1] é maior que zero, igual o que foi feito no exemplo anterior, pois caso seja, ele realiza uma soma dos valores contidos na matriz atual, juntamente com os valores da coluna de cima e também da coluna e linha anteriores que foram verificadas, caso contrário, ele apenas mantém os valores da linha e coluna de cima:
+</p>
+
+```javascript
+for (let i = 1; i <= arr.length; i++) {
+  for (let j = 1; j <= x; j++) {
+    if (j - arr[i - 1] >= 0) {
+      matrix[i][j] += matrix[i - 1][j - arr[i - 1]] + matrix[i - 1][j];
+    } else {
+      matrix[i][j] = matrix[i - 1][j];
+    }
+  }
+}
+```
+
+<p align="justify">
+Por fim, ele retorna o valor da última linha e coluna, que contém a saída do problema:
+</p>
+
+```javascript
+return matrix[arr.length][x];
+```
