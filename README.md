@@ -282,12 +282,14 @@ Para melhor visualizar essa solução por divisão e conquista, vamos utilizar o
 Primeiro é necessário subtrair X do primeiro valor do vetor, ficando 5 - 1 = 4, dessa forma, no próximo caminho sobraram apenas {1, 2, 3, 4} para serem utilizados, na qual cada um deles será utilizado em uma subtração com o nó atual = 4, até o valor de X <= 0 ou então quando não existirem mais valores a serem utilizados, como mostrado no grafo completo dessa resolução abaixo:
 
 <p align="center">
-  <img src="imgs/ex2/grafo_completo.png">
+  <img src="imgs/ex2/grafo_completo_parte1.png">
+  <img src="imgs/ex2/grafo_completo_parte2.png">
 </p>
 
 Assim, basta contar os nós que chegaram ao resultado 0, e ignorar os outros, que teremos a saída do problema, onde nesse caso seria 4, pois temos as saídas: {1, 1, 3}, {1, 4}, {1, 4} e {2, 3}.
 
 <p align="center">
-  <img src="imgs/ex2/grafo_completo-sub-estrutura.png">
+  <img src="imgs/ex2/grafo_completo_sub_estrutura_parte1.png">
+  <img src="imgs/ex2/grafo_completo_sub_estrutura_parte2.png">
 </p>
 
