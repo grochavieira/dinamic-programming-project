@@ -338,8 +338,84 @@ return count;
 
 ## Sub-Estrutura Ótima
 
+<p align="justify">
+Ainda utilizando o exemplo do arr = {1, 1, 2, 3, 4} e X = 5, é possível perceber no grafo da resolução abaixo, que ele acaba resolvendo o mesmo problema até 4 vezes, sendo eles 4-4, 4-3, 4-2 e 3-3, nesse caso é importante notar que ambos os nós 4 não são iguais, logo não seria possível considerá-los como uma resolução só, pois enquanto o primeiro nó 4, mais pra esquerda, tem 4 caminhos diferentes que pode seguir, o nó 4, mais pra direita, tem apenas 3:
+</p>
+
 <p align="center">
   <img src="imgs/ex2/grafo_completo_sub_estrutura_parte1.png">
   <img src="imgs/ex2/grafo_completo_sub_estrutura_parte2.png">
 </p>
+
+<p align="justify">
+Logo, é necessário armazenar esses valores para criar uma solução por programação dinâmica.
+</p>
+
+### Método 'bottom-up'
+
+<p align="justify">
+Para solucionar esse problema de forma eficiente, precisamos solucioná-lo primeiro por baixo, para depois ir caminhando até o problema que precisa ser resolvido utilizando os valores dos problemas já solucionados. Portanto, para resolver esse problema vamos utilizar o mesmo exemplo anterior, arr = {1, 1, 2, 3, 4} e X = 5, além disso, nós precisamos criar uma matriz com X colunas e N+1 linhas, na qual N seria o tamanho do vetor arr, zerando todos os seus elementos, com excessão de todas as colunas na posição 0:
+</p>
+
+|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
+| --- | --- | --- | --- | --- | --- | --- |
+| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
+| 1(1)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| 2(1)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| 3(2)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| 4(3)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| 5(4)  |  1  | 0   | 0   | 0   | 0   |  0  |
+
+<p align="justify">
+Para a solução desse problema é necessário resolver linha a linha da matriz, começando do primeiro elemento do vetor arr até o último, e funciona da seguinte forma: começando da linha 1, nós subtraímos todas as colunas subsequentes, com excessão da coluna 0, do primeiro elemento do vetor arr, ou seja, para o exemplo em questão seria: 1 - 1 = 0, 2 - 1 = 1, 3 - 1 = 2, e por ai vai... Porém, quando é feita essa subtração, nós olhamos para o vetor de cima e verificamos a coluna igual ao resultado obtido, logo, para 1 - 1 = 0, olhamos para a linha 0 e para a coluna 0, onde temos o valor 1, e adicionamos esse valor para a linha e coluna que estávamos utilizando, que seria a coluna 1 e linha 1, e também somamos como valor da linha de cima, mantêndo a coluna, que seria a linha 0 e coluna 1 que resultam e zero, e ao popular a linha 1 e coluna 1 ela passaria a ter o valor 1, o que isso significa é que existe 1 forma de representar o valor 1, porém se fizermos isso com o resto das colunas e verificando o valor de cima, permanecerá zerado, pois o número 1 sózinho não consegue representá-los:
+</p>
+
+|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
+| --- | --- | --- | --- | --- | --- | --- |
+| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
+| 1(1)  |  1  | 1   | 0   | 0   | 0   |  0  |
+| 2(1)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| 3(2)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| 4(3)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| 5(4)  |  1  | 0   | 0   | 0   | 0   |  0  |
+
+<p align="justify">
+Agora para a segunda linha, onde temos o segundo elemento do vetor = 1, nós fazemos o mesmo que no anterior, subtrai todas as colunas, com excessão da coluna 0, do segundo elemento do vetor, e apesar dos dois elementos serem iguais, teremos dois resultados diferentes, primeiro que na coluna um, agora teremos dois valores que podem representar o número 1, e além disso, na coluna 2, teremos um subconjunto de valores capazes de representar o valor 2, que seria {1, 1}, pois ao subtrair 2 - 1 = 1, e se olharmos na linha 1 coluna 1, teremos outro valor que não seja o 1 atual para poder representar o 2, logo o valor 1 é adicionado na coluna 2 da linha 1, pois até esse momento nós temos 2 valores que representam o número 2:
+</p>
+
+|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
+| --- | --- | --- | --- | --- | --- | --- |
+| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
+| 1(1)  |  1  | 1   | 0   | 0   | 0   |  0  |
+| 2(1)  |  1  | 2   | 1   | 0   | 0   |  0  |
+| 3(2)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| 4(3)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| 5(4)  |  1  | 0   | 0   | 0   | 0   |  0  |
+
+<p align="justify">
+Agora para a linha 3, nós teremos o terceiro elemento do vetor, que seria o 2, então é feito novamente a subtração, porém nas colunas onde o 2 não tem influência, ele mantém as que já foram encontradas, ou seja, como 2 > 1, ele mantém o valor da coluna 1 anterior que foi encontrada, e o mesmo é feito para todos os campos onde os valores do vetor são maiores que as colunas no momento da subtração, e após isso, teremos e formas de representar o 2, que seria {2} e {1, 1}, e 2 formas de representar o 3, {1, 2}, {1, 2}, pois quando é feito 3 - 2 = 1, e se olharmos na linha de cima, teremos duas formas de representar o 1, logo, ao somar a coluna 3 da linha 2, que tem o valor 0, com a coluna e linha atual, teremos o valor 2, além de uma forma de representar o 4, que seria {2, 1, 1}, como mostrado abaixo:
+</p>
+
+|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
+| --- | --- | --- | --- | --- | --- | --- |
+| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
+| 1(1)  |  1  | 1   | 0   | 0   | 0   |  0  |
+| 2(1)  |  1  | 2   | 1   | 0   | 0   |  0  |
+| 3(2)  |  1  | 2   | 2   | 2   | 1   |  0  |
+| 4(3)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| 5(4)  |  1  | 0   | 0   | 0   | 0   |  0  |
+
+<p align="justify">
+E assim nós vamos populando a tabela até chegar no último valor do vetor arr, dessa forma, em vez de utilizarmos todos os valores do vetor de uma vez, nós vamos adicionando cada um aos poucos, e vamos resolvendo com os valores que temos no momento, para então utilizar as soluções de agora para solucionarmos os próximos problemas, além disso é importante notar que a razão de adicionar uma linha a mais na matriz é porquê sempre que você olha para a linha anterior da matriz, você está olhando para uma solução que não utiliza o elemento do vetor que você está usando no momento, ou seja, se eu estou usando o elemento 2 para fazer as subtrações, se eu olhar para a linha anterior, nela eu utilizei as os elementos {1, 1}, e dessa forma eu não corro o risco de utilizar o mesmo elemento mais de uma vez, que é exatamente o que aconteceria se eu olhasse para a minha própria linha. Abaixo nós temos a solução da matriz:
+</p>
+
+|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
+| --- | --- | --- | --- | --- | --- | --- |
+| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
+| 1(1)  |  1  | 1   | 0   | 0   | 0   |  0  |
+| 2(1)  |  1  | 2   | 1   | 0   | 0   |  0  |
+| 3(2)  |  1  | 2   | 2   | 2   | 1   |  0  |
+| 4(3)  |  1  | 2   | 2   | 3   | 3   |  2  |
+| 5(4)  |  1  | 2   | 2   | 3   | 4   |  4  |
+
 
