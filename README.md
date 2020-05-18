@@ -406,7 +406,7 @@ Agora para a linha 3, nós teremos o terceiro elemento do vetor, que seria o 2, 
 | 5(4)  |  1  | 0   | 0   | 0   | 0   |  0  |
 
 <p align="justify">
-E assim nós vamos populando a tabela até chegar no último valor do vetor arr, dessa forma, em vez de utilizarmos todos os valores do vetor de uma vez, nós vamos adicionando cada um aos poucos, e vamos resolvendo com os valores que temos no momento, para então utilizar as soluções de agora para solucionarmos os próximos problemas, além disso é importante notar que a razão de adicionar uma linha a mais na matriz é porquê sempre que você olha para a linha anterior da matriz, você está olhando para uma solução que não utiliza o elemento do vetor que você está usando no momento, ou seja, se eu estou usando o elemento 2 para fazer as subtrações, se eu olhar para a linha anterior, nela eu utilizei as os elementos {1, 1}, e dessa forma eu não corro o risco de utilizar o mesmo elemento mais de uma vez, que é exatamente o que aconteceria se eu olhasse para a minha própria linha. Abaixo nós temos a solução da matriz:
+E assim nós vamos populando a matriz até chegar no último valor do vetor arr, dessa forma, em vez de utilizarmos todos os valores do vetor de uma vez, nós vamos adicionando cada um aos poucos, e vamos resolvendo com os valores que temos no momento, para então utilizar as soluções de agora para solucionarmos os próximos problemas, além disso é importante notar que a razão de adicionar uma linha a mais na matriz é porquê sempre que você olha para a linha anterior da matriz, você está olhando para uma solução que não utiliza o elemento do vetor que você está usando no momento, ou seja, se eu estou usando o elemento 2 para fazer as subtrações, se eu olhar para a linha anterior, nela eu utilizei as os elementos {1, 1}, e dessa forma eu não corro o risco de utilizar o mesmo elemento mais de uma vez, que é exatamente o que aconteceria se eu olhasse para a minha própria linha. Abaixo nós temos a solução da matriz:
 </p>
 
 |  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
@@ -418,4 +418,17 @@ E assim nós vamos populando a tabela até chegar no último valor do vetor arr,
 | 4(3)  |  1  | 2   | 2   | 3   | 3   |  2  |
 | 5(4)  |  1  | 2   | 2   | 3   | 4   |  4  |
 
+Dessa forma, se olharmos para a última linha e coluna do vetor, nós obtemos a solução do problema, que seria 4, já que os subconjuntos que formam o valor X = 5 são: {1, 4}, {1, 4}, {2, 3} e {1, 1, 3}, porém, ele também pode mostrar a quantidade de subconjuntos que formam os valores de 1-4 se olharmos para a última linha, como, por exemplo, o valor 4, que tem como saída 4, pois os vetores que formam ele seriam {4}, {3, 1}, {3, 1} e {1, 1, 2}. Além disso, é importante citar que o vetor arr não precisa estar ordenado para chegar nessa solução, como podemos ver abaixo no caos do vetor arr = {3, 1, 4, 2, 1}:
 
+|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
+| --- | --- | --- | --- | --- | --- | --- |
+| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
+| 1(3)  |  1  | 0   | 0   | 1   | 0   |  0  |
+| 2(1)  |  1  | 1   | 0   | 1   | 1   |  0  |
+| 3(4)  |  1  | 1   | 0   | 1   | 2   |  1  |
+| 4(2)  |  1  | 1   | 1   | 2   | 2   |  2  |
+| 5(1)  |  1  | 2   | 2   | 3   | 4   |  4  |
+
+### Algoritmo por Programação Dinâmica
+
+Agora vamos analisar o algoritmo por programação dinâmica:
