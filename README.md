@@ -69,7 +69,7 @@ function findMinCoin(coins, change) {
 ```
 
 <p align="justify">
-Primeiro nós temos a condição inicial que impede que o algoritmo entre dentro de uma chamada recursiva infinita, para sempre retornar 0 quando o valor do 'change', que seria o troco ou o valor V, chegar a 0:
+Primeiro nós temos o caso base que impede que o algoritmo entre dentro de uma chamada recursiva infinita, para sempre retornar 0 quando o valor do 'change', que seria o troco ou o valor V, chegar a 0:
 </p>
 
 ```javascript
@@ -287,6 +287,56 @@ Primeiro é necessário subtrair X do primeiro valor do vetor, ficando 5 - 1 = 4
 </p>
 
 Assim, basta contar os nós que chegaram ao resultado 0, e ignorar os outros, que teremos a saída do problema, onde nesse caso seria 4, pois temos as saídas: {1, 1, 3}, {1, 4}, {1, 4} e {2, 3}.
+
+### Algoritmo Recursivo
+
+Para melhor entender como isso funciona na prática, vamos analisar o algoritmo abaixo:
+
+```javascript
+function countSumSubsets(arr, x, count, index) {
+  if (x === 0) {
+    count++;
+    return count;
+  }
+
+  for (let i = index, j = 1; i < arr.length; i++, j++) {
+    count = countSumSubsets(arr, x - arr[i], count, index + j);
+  }
+
+  return count;
+}
+```
+
+<p align="justify">
+Primeiro nós temos o caso base que impede que o algoritmo entre dentro de uma chamada recursiva infinita, para sempre incrementar o contador count e retornar o seu valor para a chamada anterior quando o valor do X chegar a 0, o que significa que foi encontrado um subconjunto que tenha uma soma de seus elementos igual a X:
+</p>
+
+```javascript
+if (x === 0) {
+  count++;
+  return count;
+}
+```
+
+<p align="justify">
+Após nós temos um laço que inicia do index até o tamanho do array, sempre que essa função é chamada inicialmente o index = 0, e dentro desse laço nós temos uma chamada para a própria função, na qual seu resultado é retornado para o contador count, na qual ele chama a própria função passando o vetor arr, que sempre será o mesmo, o valor de x - arr[i], que seria a subtração de X - os valores disponíveis do vetor arr, o próprio contador count, e o index + j, que é uma das váriaveis mais importantes nessa chamada, pois ela impede que as variaveis do vetor arr que já foram utilizados, não sejam usados na próxima chamada da função, igual nos exemplos já mencionados:
+</p>
+
+```javascript
+for (let i = index, j = 1; i < arr.length; i++, j++) {
+  count = countSumSubsets(arr, x - arr[i], count, index + j);
+}
+```
+
+<p align="justify">
+Por fim a função retorna o valor do contador count, que será utilizado quando o valor de X !== 0, como também será responsável por retornar o valor final da saída do problema:
+</p>
+
+```javascript
+return count;
+```
+
+## Sub-Estrutura Ótima
 
 <p align="center">
   <img src="imgs/ex2/grafo_completo_sub_estrutura_parte1.png">
