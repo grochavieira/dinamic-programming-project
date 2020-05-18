@@ -279,3 +279,13 @@ Para melhor visualizar essa solução por divisão e conquista, vamos utilizar o
   <img src="imgs/ex2/grafo1.png">
 </p>
 
+Primeiro é necessário subtrair X do primeiro valor do vetor, ficando 5 - 1 = 4, dessa forma, no próximo caminho sobraram apenas {1, 2, 3, 4} para serem utilizados, assim, prosseguindo, o nó atual = 4, nós subtraimos do primeiro valor do vetor, ficando 4 - 1 = 3, assim, para o próximo nó restará apenas {2, 3, 4}, e isso é feito continuamente até não sobrarem mais valores dentro do vetor, como é possível ver na imagem do grafo completo abaixo:
+
+<p align="center">
+  <img src="imgs/ex2/grafo_completo.png">
+</p>
+
+<p align="center">
+  <img src="imgs/ex2/grafo_completo-sub-estrutura.png">
+</p>
+
