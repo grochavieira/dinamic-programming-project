@@ -13,13 +13,13 @@ export default function Header(props) {
           </Link>
         </li>
         <li>
-          <Link className={`${props.tabTwo}`} to="/exercisetwo">
-            Exercicio 2
+          <Link className={`${props.tabTwo}`} to="/countsubsets">
+            Contagem de subconjuntos
           </Link>
         </li>
         <li>
-          <Link className={`${props.tabThree}`} to="/exercisethree">
-            Exercicio 3
+          <Link className={`${props.tabThree}`} to="/highersumsubsequence">
+            Subsequência de maior soma
           </Link>
         </li>
       </ul>
