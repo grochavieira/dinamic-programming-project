@@ -549,7 +549,9 @@ Logo a complexidade desse algoritmo é O(N*X), na qual N seria o tamanho do veto
 ## Interface
 
 # Problema #2 - Fibonacci
+<p align="justify>"
 A sequência de Fibonacci é formada a partir de dois números iniciais, 0 e 1, e todos os números subsequentes são formados a partir desses dois números dentro de uma equação recursiva, ou seja, para encontrar o valor de um número de fibonacci é necessário somar o valor dos dois anteriores, que por sua vez também são formados pelos seus anteriores, por exemplo, para o fibonacci de 4 é necessário conhecer os valores dos fibonaccis de 3 e de 2, que por sua vez também é necessário conhecer os fibonaccis que os antecedem, logo, se partirmos do inicio onde conhecemos o valor do fibonacci de 0 e de 1, teriamos a sequência 0, 1, 1, 2, 3, onde o fibonacci(4) = 3, que seria a soma do fibonacci(3) + fibonacci(2) = 2 + 1 = 3.
+</p>
 
 ## Método da Divisão e Conquista
 <p align="justify">
@@ -560,7 +562,9 @@ Para resolver o problema de fibonacci por divisão e conquista, basta pegar o va
   <img src="imgs/ex3/fibonacci_grafo1.png">
 </p>
 
+<p align="justify">
 Como é possível observar no grafo, dependendo do lado que foi definido para ser resolvido primeiro, na qual ele pode começar por -1 ou -2, é necessário resolver apenas um lado antes que seja possível resolver o outro, como nesse caso nós escolhemos o -1 para ser resolvido primeiro, o grafo caminha para a direita, para solucionar primeiro esses problemas, para que então na volta ele seja capaz de resolver o outro lado, que seria o -2, do problema. E como é possível observar, as solução de cada lado do problema a ser resolvido são solucionadas para depois retornarem ao nó anterior do grafo, até resolver por completo o Fibonacci(4), e então passar a solucionar o Fibonacci(3) como podemos ver abaixo:
+</p>
 
 <p align="center">
   <img src="imgs/ex3/fibonacci_grafo_completo.png">
@@ -583,7 +587,9 @@ function findFibonacci(x) {
   return findFibonacci(x - 1) + findFibonacci(x - 2);
 }
 ```
+<p align="justify">
 Primeiro nós temos a condição para o caso base, para impedir que a função entre dentro de um loop infinito, que ocorre quando o valor de x, que seria o termo i, é igual a 1 ou 0, pois como já sabemos quais são os valores do Fibonacci(1) e Fibonacci(0), basta retorná-los quando for o caso:
+</p>
 
 ```javascript
 if (x === 0) {
@@ -592,14 +598,108 @@ if (x === 0) {
   return 1;
 }
 ```
+<p align="justify">
 E depois nós temos o retorno da função que devolve a solução do problema, porém, o próprio retorno chama novamente a função duas vezes, para que, como explicado anteriormente, ele divida os problemas até chegar no caso base, e retornar a solução para ambas as chamadas, para que no final tenhamos o resultado do termo de fibonacci escolhido:
+</p>
 
 ```javascript
 return findFibonacci(x - 1) + findFibonacci(x - 2);
 ```
 
 ## Sub-Estrutura Ótima
+
+<p align="justify">
+Ainda utilizando o exemplo anterior para o Fibonacci(5), é possível observar que o lado esquerdo do grafo, que foi gerado para descobrir o Fibonacci(3), é exatamente igual ao Fibonacci(3) solucionado no lado direito, assim como o caminho gerado para descobrir o Fibonacci(2), usado para encontrar o valor do Fibonacci(4), é exatamente igual ao do Fibonacci(2) usado para encontrar o valor do Fibonacci(3), como é possível observar abaixo nas áreas contornadas:
+</p>
+
 <p align="center">
   <img src="imgs/ex3/fibonacci_grafo_completo_subestrutura.png">
 </p>
 
+<p align="justify">
+Logo, seria mais eficiente armazenar esse valores dentro de um vetor para que não haja necessidade de solucioná-los novamente, e então criar uma solução em programação dinâmica.
+</p>
+
+### Método 'bottom-up'
+
+<p align="justify">
+Para solucionar esse problema por programação dinâmica precisamos começar resolvendo ele por baixo, até chegar no problema principal, e principalmente utilizar as soluções já encontradas para solucionar as próximas que dependem delas. Assim, vamos resolver o fibonacci(5) como exemplificação. Primeiro precisamos de um vetor, que tenha no mínimo o tamanho do termo a ser encontrado + 1, já que ele inicia do 0, além disso é essencial inicializar a posição 0 do vetor com 0, e a posição 1 do vetor com 1, como mostrado abaixo:
+</p>
+
+| 0   | 1   | 2   | 3   | 4   | 5   | 
+| --- | --- | --- | --- | --- | --- | 
+| 0   | 1   | -   | -   | -   | -   |
+
+<p align="justify">
+Isso é necessário para que possamos solucionar o problema da posição 2 em diante, assim, como um termo do fibonacci é composto pela soma dos seus dois termos anteriores, basta somar o valor das posições 0 e 1 do vetor para obter o valor do Fibonacci(2) que se encontra na posição 2, e preencher essa posição com o valor encontrado: 
+</p>
+
+| 0   | 1   | 2   | 3   | 4   | 5   | 
+| --- | --- | --- | --- | --- | --- | 
+| 0   | 1   | 1   | -   | -   | -   |
+
+<p align="justify">
+Agora o mesmo é feito para o Fibonacci(3), onde precisamos somar os valores da posição 1 e 2 do vetor, que já foram encontradas, e inserir o resultado na posição 3:
+</p>
+
+| 0   | 1   | 2   | 3   | 4   | 5   | 
+| --- | --- | --- | --- | --- | --- | 
+| 0   | 1   | 1   | 2   | -   | -   |
+
+<p align="justify">
+Para o Fibonacci(4) teremos que somar a posição 2 e 3 do vetor, e inserir seu valor na posição 4, e o mesmo é feito para o Fibonacci(5), na qual somamos o valor da posição 4 e 3 do vetor encontradas para achar a solução do problema principal: 
+</p>
+
+| 0   | 1   | 2   | 3   | 4   | 5   | 
+| --- | --- | --- | --- | --- | --- | 
+| 0   | 1   | 1   | 2   | 3   | 5   |
+
+<p align="justify">
+E como é possível observar, essa forma é bem mais eficiente, pois não existe a necessidade de resolver o mesmo problema para chegar na solução final, como acontecia pelo método da divisão e conquista.
+</p>
+
+### Algoritmo por Programação Dinâmica
+
+Agora vamos analisar o algoritmo por programação dinâmica:
+
+```javascript
+function findFibonacci(x) {
+  let array = [];
+  array[0] = 0;
+  array[1] = 1;
+
+  for (let i = 2; i <= x; i++) {
+    array[i] = array[i - 1] + array[i - 2];
+  }
+
+  return array[x];
+}
+```
+
+<p align="justify">
+Como no exemplo anterior, nós precisamos criar um vetor, porém como isso é feito em javascript não existe a necessidade de definir um tamanho, e inserir na sua posição 0 o valor 0 e na posição 1 o valor 1, pois esses são os valores iniciais para a série de Fibonacci:
+</p>
+
+```javascript
+let array = [];
+array[0] = 0;
+array[1] = 1;
+```
+
+<p align="justify">
+Após nós temos um laço que inicia do valor 2 e vai até o valor de x, que seria o valor do termo de fibonacci a ser encontrado, na qual ele encontra o valor de cada Fibonacci partindo do 2 até o x e guarda esses valores dentro do vetor para ser utilizado na próxima iteração até encontrar o valor de x, exatamente o que foi feito no exemplo anterior:
+</p>
+
+```javascript
+for (let i = 2; i <= x; i++) {
+  array[i] = array[i - 1] + array[i - 2];
+}
+```
+
+<p align="justify">
+Por fim nós temos o retorno da função que retorna o valor do Fibonacci(x), assim, é importante apontar que mesmo que seja pedido o Fibonacci(0) ou o Fibonacci(1) a função será capaz de retornar o valor de ambos, pois eles sempre são armazenados dentro do vetor no inicio da função, além disso eles não precisam passar pelo laço já que somente termos maiores que 1 irão entrar nele:
+</p>
+
+```javascript
+return array[x];
+```
