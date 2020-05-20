@@ -703,3 +703,29 @@ Por fim nós temos o retorno da função que retorna o valor do Fibonacci(x), as
 ```javascript
 return array[x];
 ```
+
+## Análise Assintótica
+
+<p align="justify">
+Como é possível verificar no algoritmo, a parte que mais pesa nele é o laço utilizado para encontrar os termos de Fibonacci maiores que 1: 
+</p>
+  
+```javascript
+function findFibonacci(x) {
+  let array = [];
+  array[0] = 0;
+  array[1] = 1;
+
+  for (let i = 2; i <= x; i++) {
+    array[i] = array[i - 1] + array[i - 2];
+  }
+
+  return array[x];
+}
+```
+
+<p align="justify">
+Logo a complexidade desse algoritmo é O(x), ou então O(n), na qual x é termo de Fibonacci a ser encontrado, que seria o ponto de parada das iterações realizadas no laço, pois apesar do laço iniciar no 2, não existe complexidade O(x-2) já que precisamos desconsiderar as constantes.
+</p>
+
+## Interface
