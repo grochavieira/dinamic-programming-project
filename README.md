@@ -248,7 +248,7 @@ for (let i = 1; i <= change; i++) {
 savedResults[i] = bestCount;
 }
 
-```
+````
 <p align="justify">
 Logo a complexidade desse algoritmo é O(V*C), na qual V seria o valor do troco, ou então o valor a ser representado, enquanto C seria o tamanho do vetor que contêm as moedas. No pior caso, onde C = V, a complexidade do algoritmo passa a ser O(V^2), ou então O(n^2), supondo que seja realizado um filtro no vetor que contêm as moedas para retirar os valores que são maiores que o valor de V.
 </p>
@@ -272,9 +272,9 @@ Por exemplo, para arr = {1, 1, 2, 3, 4} e X = 5, a saída deverá ser 4, pois n�
 ## Método da Divisão e Conquista
 
 <p align="justify">
-Para resolver este problema por divisão e conquista, é necessário pegar o valor de X e subtrair dele cada um dos valores contidos no vetor arr, e para cada caminho subsequente, é necessário descontar do vetor os valores que já foram utilizados, para que não sejam criados caminhos repetidos, por exemplo, para arr = {1, 2, 3, 4} e X = 5, se eu fizer 5 - 1 = 4, para o primeiro caminho, no caminho gerado a partir dele eu não poderei usar o 1 novamente, os únicos que eu poderei usar são os valores {2, 3, 4}, e então isso é feito até o valor inicial de X = 0, o que significa que foi encontrado um subconjunto capaz de representar X, logo contar esse caminho para encontrar a solução final, e no caso de X < 0 esse caminho é descartado. 
+Para resolver este problema por divisão e conquista, é necessário pegar o valor de X e subtrair dele cada um dos valores contidos no vetor arr, e para cada caminho subsequente, é necessário descontar do vetor os valores que já foram utilizados, para que não sejam criados caminhos repetidos, por exemplo, para arr = {1, 2, 3, 4} e X = 5, se eu fizer 5 - 1 = 4, para o primeiro caminho, no caminho gerado a partir dele eu não poderei usar o 1 novamente, os únicos que eu poderei usar são os valores {2, 3, 4}, e então isso é feito até o valor inicial de X = 0, o que significa que foi encontrado um subconjunto capaz de representar X, logo contar esse caminho para encontrar a solução final, e no caso de X < 0 esse caminho é descartado.
 </p>
-  
+
 <p align = "justify">
 Para melhor visualizar essa solução por divisão e conquista, vamos utilizar o exemplo arr = {1, 1, 2, 3, 4} e X = 5, e visualizar a resolução pelo grafo abaixo:
 </p>
@@ -309,7 +309,7 @@ function countSumSubsets(arr, x, count, index) {
 
   return count;
 }
-```
+````
 
 <p align="justify">
 Primeiro nós temos o caso base que impede que o algoritmo entre dentro de uma chamada recursiva infinita, para sempre incrementar o contador count e retornar o seu valor para a chamada anterior quando o valor do X chegar a 0, o que significa que foi encontrado um subconjunto que tenha uma soma de seus elementos igual a X:
@@ -361,79 +361,79 @@ Logo, é necessário armazenar esses valores para criar uma solução por progra
 Para solucionar esse problema de forma eficiente, precisamos solucioná-lo primeiro por baixo, para depois ir caminhando até o problema que precisa ser resolvido utilizando os valores dos problemas já solucionados. Portanto, para resolver esse problema vamos utilizar o mesmo exemplo anterior, arr = {1, 1, 2, 3, 4} e X = 5, além disso, nós precisamos criar uma matriz com X colunas e N linhas, iniciando do 0, na qual N seria o tamanho do vetor arr, zerando todos os seus elementos, com excessão de todas as colunas na posição 0:
 </p>
 
-|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
-| --- | --- | --- | --- | --- | --- | --- |
-| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
-| 1(1)  |  1  | 0   | 0   | 0   | 0   |  0  |
-| 2(1)  |  1  | 0   | 0   | 0   | 0   |  0  |
-| 3(2)  |  1  | 0   | 0   | 0   | 0   |  0  |
-| 4(3)  |  1  | 0   | 0   | 0   | 0   |  0  |
-| 5(4)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| -    | 0   | 1   | 2   | 3   | 4   | 5   |
+| ---- | --- | --- | --- | --- | --- | --- |
+| 0    | 1   | 0   | 0   | 0   | 0   | 0   |
+| 1(1) | 1   | 0   | 0   | 0   | 0   | 0   |
+| 2(1) | 1   | 0   | 0   | 0   | 0   | 0   |
+| 3(2) | 1   | 0   | 0   | 0   | 0   | 0   |
+| 4(3) | 1   | 0   | 0   | 0   | 0   | 0   |
+| 5(4) | 1   | 0   | 0   | 0   | 0   | 0   |
 
 <p align="justify">
 Para a solução desse problema é necessário resolver linha a linha da matriz, começando do primeiro elemento do vetor arr até o último, e funciona da seguinte forma: começando da linha 1, nós subtraímos todas as colunas subsequentes, com excessão da coluna 0, do primeiro elemento do vetor arr, ou seja, para o exemplo em questão seria: 1 - 1 = 0, 2 - 1 = 1, 3 - 1 = 2, e por ai vai... Porém, quando é feita essa subtração, nós olhamos para o vetor de cima e verificamos a coluna igual ao resultado obtido, logo, para 1 - 1 = 0, olhamos para a linha 0 e para a coluna 0, onde temos o valor 1, e adicionamos esse valor para a linha e coluna que estávamos utilizando, que seria a coluna 1 e linha 1, e também somamos como valor da linha de cima, mantêndo a coluna, que seria a linha 0 e coluna 1 que resultam e zero, e ao popular a linha 1 e coluna 1 ela passaria a ter o valor 1, o que isso significa é que existe 1 forma de representar o valor 1, porém se fizermos isso com o resto das colunas e verificando o valor de cima, permanecerá zerado, pois o número 1 sózinho não consegue representá-los:
 </p>
 
-|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
-| --- | --- | --- | --- | --- | --- | --- |
-| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
-| 1(1)  |  1  | 1   | 0   | 0   | 0   |  0  |
-| 2(1)  |  1  | 0   | 0   | 0   | 0   |  0  |
-| 3(2)  |  1  | 0   | 0   | 0   | 0   |  0  |
-| 4(3)  |  1  | 0   | 0   | 0   | 0   |  0  |
-| 5(4)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| -    | 0   | 1   | 2   | 3   | 4   | 5   |
+| ---- | --- | --- | --- | --- | --- | --- |
+| 0    | 1   | 0   | 0   | 0   | 0   | 0   |
+| 1(1) | 1   | 1   | 0   | 0   | 0   | 0   |
+| 2(1) | 1   | 0   | 0   | 0   | 0   | 0   |
+| 3(2) | 1   | 0   | 0   | 0   | 0   | 0   |
+| 4(3) | 1   | 0   | 0   | 0   | 0   | 0   |
+| 5(4) | 1   | 0   | 0   | 0   | 0   | 0   |
 
 <p align="justify">
 Agora para a segunda linha, onde temos o segundo elemento do vetor = 1, nós fazemos o mesmo que no anterior, subtrai todas as colunas, com excessão da coluna 0, do segundo elemento do vetor, e apesar dos dois elementos serem iguais, teremos dois resultados diferentes, primeiro que na coluna um, agora teremos dois valores que podem representar o número 1, e além disso, na coluna 2, teremos um subconjunto de valores capazes de representar o valor 2, que seria {1, 1}, pois ao subtrair 2 - 1 = 1, e se olharmos na linha 1 coluna 1, teremos outro valor que não seja o 1 atual para poder representar o 2, logo o valor 1 é adicionado na coluna 2 da linha 1, pois até esse momento nós temos 2 valores que representam o número 2:
 </p>
 
-|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
-| --- | --- | --- | --- | --- | --- | --- |
-| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
-| 1(1)  |  1  | 1   | 0   | 0   | 0   |  0  |
-| 2(1)  |  1  | 2   | 1   | 0   | 0   |  0  |
-| 3(2)  |  1  | 0   | 0   | 0   | 0   |  0  |
-| 4(3)  |  1  | 0   | 0   | 0   | 0   |  0  |
-| 5(4)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| -    | 0   | 1   | 2   | 3   | 4   | 5   |
+| ---- | --- | --- | --- | --- | --- | --- |
+| 0    | 1   | 0   | 0   | 0   | 0   | 0   |
+| 1(1) | 1   | 1   | 0   | 0   | 0   | 0   |
+| 2(1) | 1   | 2   | 1   | 0   | 0   | 0   |
+| 3(2) | 1   | 0   | 0   | 0   | 0   | 0   |
+| 4(3) | 1   | 0   | 0   | 0   | 0   | 0   |
+| 5(4) | 1   | 0   | 0   | 0   | 0   | 0   |
 
 <p align="justify">
 Agora para a linha 3, nós teremos o terceiro elemento do vetor, que seria o 2, então é feito novamente a subtração, porém nas colunas onde o 2 não tem influência, ele mantém as que já foram encontradas, ou seja, como 2 > 1, ele mantém o valor da coluna 1 anterior que foi encontrada, e o mesmo é feito para todos os campos onde os valores do vetor são maiores que as colunas no momento da subtração, e após isso, teremos e formas de representar o 2, que seria {2} e {1, 1}, e 2 formas de representar o 3, {1, 2}, {1, 2}, pois quando é feito 3 - 2 = 1, e se olharmos na linha de cima, teremos duas formas de representar o 1, logo, ao somar a coluna 3 da linha 2, que tem o valor 0, com a coluna e linha atual, teremos o valor 2, além de uma forma de representar o 4, que seria {2, 1, 1}, como mostrado abaixo:
 </p>
 
-|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
-| --- | --- | --- | --- | --- | --- | --- |
-| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
-| 1(1)  |  1  | 1   | 0   | 0   | 0   |  0  |
-| 2(1)  |  1  | 2   | 1   | 0   | 0   |  0  |
-| 3(2)  |  1  | 2   | 2   | 2   | 1   |  0  |
-| 4(3)  |  1  | 0   | 0   | 0   | 0   |  0  |
-| 5(4)  |  1  | 0   | 0   | 0   | 0   |  0  |
+| -    | 0   | 1   | 2   | 3   | 4   | 5   |
+| ---- | --- | --- | --- | --- | --- | --- |
+| 0    | 1   | 0   | 0   | 0   | 0   | 0   |
+| 1(1) | 1   | 1   | 0   | 0   | 0   | 0   |
+| 2(1) | 1   | 2   | 1   | 0   | 0   | 0   |
+| 3(2) | 1   | 2   | 2   | 2   | 1   | 0   |
+| 4(3) | 1   | 0   | 0   | 0   | 0   | 0   |
+| 5(4) | 1   | 0   | 0   | 0   | 0   | 0   |
 
 <p align="justify">
 E assim nós vamos populando a matriz até chegar no último valor do vetor arr, dessa forma, em vez de utilizarmos todos os valores do vetor de uma vez, nós vamos adicionando cada um aos poucos, e vamos resolvendo com os valores que temos no momento, para então utilizar as soluções de agora para solucionarmos os próximos problemas, além disso é importante notar que a razão de adicionar uma linha a mais na matriz é porquê sempre que você olha para a linha anterior da matriz, você está olhando para uma solução que não utiliza o elemento do vetor que você está usando no momento, ou seja, se eu estou usando o elemento 2 para fazer as subtrações, se eu olhar para a linha anterior, nela eu utilizei as os elementos {1, 1}, e dessa forma eu não corro o risco de utilizar o mesmo elemento mais de uma vez, que é exatamente o que aconteceria se eu olhasse para a minha própria linha. Abaixo nós temos a solução da matriz:
 </p>
 
-|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
-| --- | --- | --- | --- | --- | --- | --- |
-| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
-| 1(1)  |  1  | 1   | 0   | 0   | 0   |  0  |
-| 2(1)  |  1  | 2   | 1   | 0   | 0   |  0  |
-| 3(2)  |  1  | 2   | 2   | 2   | 1   |  0  |
-| 4(3)  |  1  | 2   | 2   | 3   | 3   |  2  |
-| 5(4)  |  1  | 2   | 2   | 3   | 4   |  4  |
+| -    | 0   | 1   | 2   | 3   | 4   | 5   |
+| ---- | --- | --- | --- | --- | --- | --- |
+| 0    | 1   | 0   | 0   | 0   | 0   | 0   |
+| 1(1) | 1   | 1   | 0   | 0   | 0   | 0   |
+| 2(1) | 1   | 2   | 1   | 0   | 0   | 0   |
+| 3(2) | 1   | 2   | 2   | 2   | 1   | 0   |
+| 4(3) | 1   | 2   | 2   | 3   | 3   | 2   |
+| 5(4) | 1   | 2   | 2   | 3   | 4   | 4   |
 
 <p align="justify">
 Dessa forma, se olharmos para a última linha e coluna do vetor, nós obtemos a solução do problema, que seria 4, já que os subconjuntos que formam o valor X = 5 são: {1, 4}, {1, 4}, {2, 3} e {1, 1, 3}, porém, ele também pode mostrar a quantidade de subconjuntos que formam os valores de 1-4 se olharmos para a última linha, como, por exemplo, o valor 4, que tem como saída 4, pois os vetores que formam ele seriam {4}, {3, 1}, {3, 1} e {1, 1, 2}. Além disso, é importante citar que o vetor arr não precisa estar ordenado para chegar nessa solução, como podemos ver abaixo no caos do vetor arr = {3, 1, 4, 2, 1}:
 </p>
 
-|  -  | 0   | 1   | 2   | 3   | 4   | 5   | 
-| --- | --- | --- | --- | --- | --- | --- |
-| 0   |  1  | 0   | 0   | 0   | 0   |  0  |
-| 1(3)  |  1  | 0   | 0   | 1   | 0   |  0  |
-| 2(1)  |  1  | 1   | 0   | 1   | 1   |  0  |
-| 3(4)  |  1  | 1   | 0   | 1   | 2   |  1  |
-| 4(2)  |  1  | 1   | 1   | 2   | 2   |  2  |
-| 5(1)  |  1  | 2   | 2   | 3   | 4   |  4  |
+| -    | 0   | 1   | 2   | 3   | 4   | 5   |
+| ---- | --- | --- | --- | --- | --- | --- |
+| 0    | 1   | 0   | 0   | 0   | 0   | 0   |
+| 1(3) | 1   | 0   | 0   | 1   | 0   | 0   |
+| 2(1) | 1   | 1   | 0   | 1   | 1   | 0   |
+| 3(4) | 1   | 1   | 0   | 1   | 2   | 1   |
+| 4(2) | 1   | 1   | 1   | 2   | 2   | 2   |
+| 5(1) | 1   | 2   | 2   | 3   | 4   | 4   |
 
 ### Algoritmo por Programação Dinâmica
 
@@ -467,6 +467,7 @@ function countSumSubsets(arr, x) {
   return matrix[arr.length][x];
 }
 ```
+
 <p align="justify">
 Primeiro nós temos a criação da matriz matrix e sua inicialização, populando todos os seus campos com o valor 0, com excessão das colunas que sejam iguais a 0:
 </p>
@@ -485,6 +486,7 @@ for (let i = 0; i <= arr.length; i++) {
   }
 }
 ```
+
 <p align="justify">
 Após nós temos um laço que percorre todas as linhas da matriz, começando da linha 1, e todas as colunas, também iniciando da coluna 1, na qual, dentro do segundo laço é realizado o processo de popular a matriz, onde primeiro temos uma condição para verificar se a subtração da coluna j com o elemento do vetor arr[i - 1] é maior que zero, igual o que foi feito no exemplo anterior, pois caso seja, ele realiza uma soma dos valores contidos na matriz atual, juntamente com os valores da coluna de cima e também da coluna e linha anteriores que foram verificadas, caso contrário, ele apenas mantém os valores da linha e coluna de cima:
 </p>
@@ -508,6 +510,7 @@ Por fim, ele retorna o valor da última linha e coluna, que contém a saída do 
 ```javascript
 return matrix[arr.length][x];
 ```
+
 ## Análise Assintótica
 
 <p align="justify">
@@ -518,37 +521,38 @@ Como é possível verificar no algoritmo, a parte que mais pesa nele acaba nem s
 function countSumSubsets(arr, x) {
   let matrix = [];
 
-  for (let i = 0; i <= arr.length; i++) {
-    matrix[i] = [];
-    for (let j = 0; j <= x; j++) {
-      if (j === 0) {
-        matrix[i][j] = 1;
-      } else {
-        matrix[i][j] = 0;
-      }
-    }
-  }
-
-  for (let i = 1; i <= arr.length; i++) {
-    for (let j = 1; j <= x; j++) {
-      if (j - arr[i - 1] >= 0) {
-        matrix[i][j] += matrix[i - 1][j - arr[i - 1]] + matrix[i - 1][j];
-      } else {
-        matrix[i][j] = matrix[i - 1][j];
-      }
-    }
-  }
-
-  return matrix[arr.length][x];
+for (let i = 0; i <= arr.length; i++) {
+matrix[i] = [];
+for (let j = 0; j <= x; j++) {
+if (j === 0) {
+matrix[i][j] = 1;
+} else {
+matrix[i][j] = 0;
 }
-```
+}
+}
+
+for (let i = 1; i <= arr.length; i++) {
+for (let j = 1; j <= x; j++) {
+if (j - arr[i - 1] >= 0) {
+matrix[i][j] += matrix[i - 1]j - arr[i - 1]] + matrix[i - 1][j];
+} else {
+matrix[i][j] = matrix[i - 1][j];
+}
+}
+}
+
+return matrix[arr.length][x];
+}
+
+````
 <p align="justify">
 Logo a complexidade desse algoritmo é O(N*X), na qual N seria o tamanho do vetor arr, enquanto X seria o valor a ser representado pelos subconjuntos de arr. Infelizmente nesse caso não é possível supor um limite para o pior caso, pois o valor de N pode ser muito superior ao de X, já que podemos inserir valores iguais, pois mesmo que seja realizado um filtro para manter retirar os valores maiores que X, ainda assim seria necessário manter os valores repetidos do vetor arr.
 </p>
 
 ## Interface
 
-# Problema #2 - Fibonacci
+# Problema #3 - Fibonacci
 <p align="justify">
 A sequência de Fibonacci é formada a partir de dois números iniciais, 0 e 1, e todos os números subsequentes são formados a partir desses dois números dentro de uma equação recursiva, ou seja, para encontrar o valor de um número de fibonacci é necessário somar o valor dos dois anteriores, que por sua vez também são formados pelos seus anteriores, por exemplo, para o fibonacci de 4 é necessário conhecer os valores dos fibonaccis de 3 e de 2, que por sua vez também é necessário conhecer os fibonaccis que os antecedem, logo, se partirmos do inicio onde conhecemos o valor do fibonacci de 0 e de 1, teriamos a sequência 0, 1, 1, 2, 3, onde o fibonacci(4) = 3, que seria a soma do fibonacci(3) + fibonacci(2) = 2 + 1 = 3.
 </p>
@@ -586,7 +590,8 @@ function findFibonacci(x) {
 
   return findFibonacci(x - 1) + findFibonacci(x - 2);
 }
-```
+````
+
 <p align="justify">
 Primeiro nós temos a condição para o caso base, para impedir que a função entre dentro de um loop infinito, que ocorre quando o valor de x, que seria o termo i, é igual a 1 ou 0, pois como já sabemos quais são os valores do Fibonacci(1) e Fibonacci(0), basta retorná-los quando for o caso:
 </p>
@@ -598,6 +603,7 @@ if (x === 0) {
   return 1;
 }
 ```
+
 <p align="justify">
 E depois nós temos o retorno da função que devolve a solução do problema, porém, o próprio retorno chama novamente a função duas vezes, para que, como explicado anteriormente, ele divida os problemas até chegar no caso base, e retornar a solução para ambas as chamadas, para que no final tenhamos o resultado do termo de fibonacci escolhido:
 </p>
@@ -626,32 +632,32 @@ Logo, seria mais eficiente armazenar esse valores dentro de um vetor para que n�
 Para solucionar esse problema por programação dinâmica precisamos começar resolvendo ele por baixo, até chegar no problema principal, e principalmente utilizar as soluções já encontradas para solucionar as próximas que dependem delas. Assim, vamos resolver o fibonacci(5) como exemplificação. Primeiro precisamos de um vetor, que tenha no mínimo o tamanho do termo a ser encontrado + 1, já que ele inicia do 0, além disso é essencial inicializar a posição 0 do vetor com 0, e a posição 1 do vetor com 1, como mostrado abaixo:
 </p>
 
-| 0   | 1   | 2   | 3   | 4   | 5   | 
-| --- | --- | --- | --- | --- | --- | 
+| 0   | 1   | 2   | 3   | 4   | 5   |
+| --- | --- | --- | --- | --- | --- |
 | 0   | 1   | -   | -   | -   | -   |
 
 <p align="justify">
 Isso é necessário para que possamos solucionar o problema da posição 2 em diante, assim, como um termo do fibonacci é composto pela soma dos seus dois termos anteriores, basta somar o valor das posições 0 e 1 do vetor para obter o valor do Fibonacci(2) que se encontra na posição 2, e preencher essa posição com o valor encontrado: 
 </p>
 
-| 0   | 1   | 2   | 3   | 4   | 5   | 
-| --- | --- | --- | --- | --- | --- | 
+| 0   | 1   | 2   | 3   | 4   | 5   |
+| --- | --- | --- | --- | --- | --- |
 | 0   | 1   | 1   | -   | -   | -   |
 
 <p align="justify">
 Agora o mesmo é feito para o Fibonacci(3), onde precisamos somar os valores da posição 1 e 2 do vetor, que já foram encontradas, e inserir o resultado na posição 3:
 </p>
 
-| 0   | 1   | 2   | 3   | 4   | 5   | 
-| --- | --- | --- | --- | --- | --- | 
+| 0   | 1   | 2   | 3   | 4   | 5   |
+| --- | --- | --- | --- | --- | --- |
 | 0   | 1   | 1   | 2   | -   | -   |
 
 <p align="justify">
 Para o Fibonacci(4) teremos que somar a posição 2 e 3 do vetor, e inserir seu valor na posição 4, e o mesmo é feito para o Fibonacci(5), na qual somamos o valor da posição 4 e 3 do vetor encontradas para achar a solução do problema principal: 
 </p>
 
-| 0   | 1   | 2   | 3   | 4   | 5   | 
-| --- | --- | --- | --- | --- | --- | 
+| 0   | 1   | 2   | 3   | 4   | 5   |
+| --- | --- | --- | --- | --- | --- |
 | 0   | 1   | 1   | 2   | 3   | 5   |
 
 <p align="justify">
@@ -716,12 +722,13 @@ function findFibonacci(x) {
   array[0] = 0;
   array[1] = 1;
 
-  for (let i = 2; i <= x; i++) {
-    array[i] = array[i - 1] + array[i - 2];
-  }
-
-  return array[x];
+for (let i = 2; i <= x; i++) {
+array[i] = array[i - 1] + array[i - 2];
 }
+
+return array[x];
+}
+
 ```
 
 <p align="justify">
@@ -729,3 +736,4 @@ Logo a complexidade desse algoritmo é O(x), ou então O(n), na qual x é termo 
 </p>
 
 ## Interface
+```
