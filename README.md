@@ -553,8 +553,53 @@ A sequência de Fibonacci é formada a partir de dois números iniciais, 0 e 1, 
 
 ## Método da Divisão e Conquista
 <p align="justify">
-Para resolver o problema de fibonacci por divisão e conquista, basta pegar o valor do termo que deseja ser encontrado e subtrair 2 e 1 do termo principal que deseja ser encontrado, pois, por exemplo para o termo i = 5, nós teríamos uma fórmula da seguinte forma: Fibonacci(5) = Fibonacci(4) + Fibonacci(3), pois o valor do termo é encontrado através da soma dos dois termos anteriores, porém como não temos o valor do Fibonacci(4) e Fibonacci(3) o ideal seria utilizar o mesmo método para os dois, até chegarmos no caso base, quando nós temos Fibonacci(1) e Fibonacci(0), pois o valor desses dois nós já temos, e basta retornar os valores até chegar no problema principal, para melhor visualizar esse problema, vamos olhar o grafo abaixo:
+Para resolver o problema de fibonacci por divisão e conquista, basta pegar o valor do termo que deseja ser encontrado e subtrair 2 e 1 do termo principal, pois, por exemplo para o termo i = 5, nós teríamos uma fórmula da seguinte forma: Fibonacci(5) = Fibonacci(4) + Fibonacci(3), pois o valor do termo é encontrado através da soma dos dois termos anteriores, porém como não temos o valor do Fibonacci(4) e Fibonacci(3) o ideal seria utilizar o mesmo método para os dois, até chegarmos no caso base, quando nós temos Fibonacci(1) e Fibonacci(0), pois o valor desses dois nós já temos, e basta retornar os valores até chegar no problema principal, para melhor visualizar esse problema, vamos olhar o grafo abaixo:
 </p>
 
+<p align="center">
+  <img src="imgs/ex3/fibonacci_grafo1.png">
+</p>
 
+Como é possível observar no grafo, dependendo do lado que foi definido para ser resolvido primeiro, na qual ele pode começar por -1 ou -2, é necessário resolver apenas um lado antes que seja possível resolver o outro, como nesse caso nós escolhemos o -1 para ser resolvido primeiro, o grafo caminha para a direita, para solucionar primeiro esses problemas, para que então na volta ele seja capaz de resolver o outro lado, que seria o -2, do problema. E como é possível observar, as solução de cada lado do problema a ser resolvido são solucionadas para depois retornarem ao nó anterior do grafo, até resolver por completo o Fibonacci(4), e então passar a solucionar o Fibonacci(3) como podemos ver abaixo:
+
+<p align="center">
+  <img src="imgs/ex3/fibonacci_grafo_completo.png">
+</p>
+
+Dessa forma, após os dois lados serem solucionados, o resultado deles é somado para obter a solução do Fibonacci(5).
+
+## Algoritmo por Divisão e Conquista
+
+Para melhor entender como isso funciona na prática, vamos analisar o algoritmo abaixo:
+
+```javascript
+function findFibonacci(x) {
+  if (x === 0) {
+    return 0;
+  } else if (x === 1) {
+    return 1;
+  }
+
+  return findFibonacci(x - 1) + findFibonacci(x - 2);
+}
+```
+Primeiro nós temos a condição para o caso base, para impedir que a função entre dentro de um loop infinito, que ocorre quando o valor de x, que seria o termo i, é igual a 1 ou 0, pois como já sabemos quais são os valores do Fibonacci(1) e Fibonacci(0), basta retorná-los quando for o caso:
+
+```javascript
+if (x === 0) {
+  return 0;
+} else if (x === 1) {
+  return 1;
+}
+```
+E depois nós temos o retorno da função que devolve a solução do problema, porém, o próprio retorno chama novamente a função duas vezes, para que, como explicado anteriormente, ele divida os problemas até chegar no caso base, e retornar a solução para ambas as chamadas, para que no final tenhamos o resultado do termo de fibonacci escolhido:
+
+```javascript
+return findFibonacci(x - 1) + findFibonacci(x - 2);
+```
+
+## Sub-Estrutura Ótima
+<p align="center">
+  <img src="imgs/ex3/fibonacci_grafo_completo_subestrutura.png">
+</p>
 
