@@ -257,7 +257,7 @@ Logo a complexidade desse algoritmo é O(V*C), na qual V seria o valor do troco,
 Exemplo da interface em funcionamento:
 
 <p align="center">
-  <img src="imgs/ex1/change_min_example.gif">
+  <img src="imgs/ex1/min_change_example.gif">
 </p>
 
 # Problema #2 - Contagem de subconjuntos com soma X
@@ -555,7 +555,7 @@ Logo a complexidade desse algoritmo é O(N*X), na qual N seria o tamanho do veto
 Exemplo da interface em funcionamento:
 
 <p align="center">
-  <img src="imgs/ex1/count_subset_example.gif">
+  <img src="imgs/ex2/count_subset_example.gif">
 </p>
 
 # Problema #3 - Fibonacci
@@ -745,6 +745,6 @@ Logo a complexidade desse algoritmo é O(x), ou então O(n), na qual x é termo 
 Exemplo da interface em funcionamento:
 
 <p align="center">
-  <img src="imgs/ex1/fibonacci_example.gif">
+  <img src="imgs/ex3/fibonacci_example.gif">
 </p>
 ```
