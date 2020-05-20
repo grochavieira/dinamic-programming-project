@@ -549,7 +549,7 @@ Logo a complexidade desse algoritmo é O(N*X), na qual N seria o tamanho do veto
 ## Interface
 
 # Problema #2 - Fibonacci
-<p align="justify>"
+<p align="justify">
 A sequência de Fibonacci é formada a partir de dois números iniciais, 0 e 1, e todos os números subsequentes são formados a partir desses dois números dentro de uma equação recursiva, ou seja, para encontrar o valor de um número de fibonacci é necessário somar o valor dos dois anteriores, que por sua vez também são formados pelos seus anteriores, por exemplo, para o fibonacci de 4 é necessário conhecer os valores dos fibonaccis de 3 e de 2, que por sua vez também é necessário conhecer os fibonaccis que os antecedem, logo, se partirmos do inicio onde conhecemos o valor do fibonacci de 0 e de 1, teriamos a sequência 0, 1, 1, 2, 3, onde o fibonacci(4) = 3, que seria a soma do fibonacci(3) + fibonacci(2) = 2 + 1 = 3.
 </p>
 
@@ -572,7 +572,7 @@ Como é possível observar no grafo, dependendo do lado que foi definido para se
 
 Dessa forma, após os dois lados serem solucionados, o resultado deles é somado para obter a solução do Fibonacci(5).
 
-## Algoritmo por Divisão e Conquista
+### Algoritmo por Divisão e Conquista
 
 Para melhor entender como isso funciona na prática, vamos analisar o algoritmo abaixo:
 
