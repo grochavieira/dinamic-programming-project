@@ -462,7 +462,7 @@ function countSumSubsets(arr, x) {
   for (let i = 1; i <= arr.length; i++) {
     for (let j = 1; j <= x; j++) {
       if (j - arr[i - 1] >= 0) {
-        matrix[i][j] += matrix[i - 1][j - arr[i - 1]] + matrix[i - 1][j];
+        matrix[i][j] = matrix[i - 1][j - arr[i - 1]] + matrix[i - 1][j];
       } else {
         matrix[i][j] = matrix[i - 1][j];
       }
@@ -500,7 +500,7 @@ Após nós temos um laço que percorre todas as linhas da matriz, começando da 
 for (let i = 1; i <= arr.length; i++) {
   for (let j = 1; j <= x; j++) {
     if (j - arr[i - 1] >= 0) {
-      matrix[i][j] += matrix[i - 1][j - arr[i - 1]] + matrix[i - 1][j];
+      matrix[i][j] = matrix[i - 1][j - arr[i - 1]] + matrix[i - 1][j];
     } else {
       matrix[i][j] = matrix[i - 1][j];
     }
@@ -526,28 +526,28 @@ Como é possível verificar no algoritmo, a parte que mais pesa nele acaba nem s
 function countSumSubsets(arr, x) {
   let matrix = [];
 
-for (let i = 0; i <= arr.length; i++) {
-matrix[i] = [];
-for (let j = 0; j <= x; j++) {
-if (j === 0) {
-matrix[i][j] = 1;
-} else {
-matrix[i][j] = 0;
-}
-}
-}
+  for (let i = 0; i <= arr.length; i++) {
+    matrix[i] = [];
+    for (let j = 0; j <= x; j++) {
+      if (j === 0) {
+        matrix[i][j] = 1;
+      } else {
+        matrix[i][j] = 0;
+      }
+    }
+  }
 
-for (let i = 1; i <= arr.length; i++) {
-for (let j = 1; j <= x; j++) {
-if (j - arr[i - 1] >= 0) {
-matrix[i][j] += matrix[i - 1]j - arr[i - 1]] + matrix[i - 1][j];
-} else {
-matrix[i][j] = matrix[i - 1][j];
-}
-}
-}
+  for (let i = 1; i <= arr.length; i++) {
+    for (let j = 1; j <= x; j++) {
+      if (j - arr[i - 1] >= 0) {
+        matrix[i][j] = matrix[i - 1][j - arr[i - 1]] + matrix[i - 1][j];
+      } else {
+        matrix[i][j] = matrix[i - 1][j];
+      }
+    }
+  }
 
-return matrix[arr.length][x];
+  return matrix[arr.length][x];
 }
 
 ````
