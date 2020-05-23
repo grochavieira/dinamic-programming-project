@@ -205,7 +205,7 @@ for (let i = 0; i <= change; i++) {
 ```
 
 <p align="justify">
-Após, iremos percorrer um laço começando do 1 até 'change', sempre iniciando a variavel 'currentChange' = i, que representa o troco, ou valor V, atual, e depois inicializamos 'bestCount' com o valor máximo do JavaScript. Dentro desse laço nós temos outro laço que percorre todas as moedas do vetor 'coins', na qual foi adicionado uma condição para ele entrar somente quando as moedas forem menores que o valor de 'currentChange'. Então, dentro desse laço, ele procura um valor correspondente no index do vetor 'savedResults' que seja igual a 'currentChange' - 'coins[j]', que seria o valor atual de V menos as moedas que são menores que V, soma + 1, já que uma moeda foi utilizada, para então no final do laço realizar uma comparação entre cada um desses valores encontrados e pegar o melhor entre eles, e após terminar esse laço, o melhor resultado é salvo no vetor 'savedResults' antes da próxima iteração do laço principal, e depois de finalizar o laço principal, a função retorna o melhor resultado para o valor V:
+Após, iremos percorrer um laço começando do 1 até 'change', sempre iniciando a variavel 'currentChange' = i, que representa o troco, ou valor V, atual, e depois inicializamos 'bestCount' com o valor máximo do JavaScript. Dentro desse laço nós temos outro laço que percorre todas as moedas do vetor 'coins', na qual foi adicionado uma condição para ele entrar somente quando as moedas forem menores que o valor de 'currentChange'. Então, dentro desse laço, ele procura um valor correspondente no index do vetor 'savedResults' que seja igual a 'currentChange' - 'coins[j]', que seria o valor atual de V menos as moedas que são menores que V, soma + 1, já que uma moeda foi utilizada, para então no final do laço realizar uma comparação entre cada um desses valores encontrados e pegar o melhor entre eles, e após terminar esse laço, o melhor resultado é salvo no vetor 'savedResults' antes da próxima iteração do laço principal:
 </p>
 
 ```javascript
@@ -223,6 +223,10 @@ for (let i = 1; i <= change; i++) {
   }
   savedResults[i] = bestCount;
 }
+```
+E, por fim, depois de finalizar o laço principal, a função retorna o melhor resultado para o valor V, que seria a última posição do vetor correspondente ao 'change':
+```javascript
+return savedResults[change];
 ```
 
 ## Análise Assintótica
