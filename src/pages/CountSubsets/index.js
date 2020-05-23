@@ -45,7 +45,7 @@ export default function CountSubsets() {
     for (let i = 1; i <= arr.length; i++) {
       for (let j = 1; j <= x; j++) {
         if (j - arr[i - 1] >= 0) {
-          matrix[i][j] += matrix[i - 1][j - arr[i - 1]] + matrix[i - 1][j];
+          matrix[i][j] = matrix[i - 1][j - arr[i - 1]] + matrix[i - 1][j];
         } else {
           matrix[i][j] = matrix[i - 1][j];
         }
