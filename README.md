@@ -31,6 +31,7 @@
 👉<a href="#-layout" style="text-decoration: none"> Layout</a> <br/>
 👉<a href="#-como-executar-o-projeto" style="text-decoration: none"> Como executar</a> <br/>
 👉<a href="#-tecnologias" style="text-decoration: none"> Tecnologias</a> <br/>
+👉<a href="#-explicacao" style="text-decoration: none"> Explicação</a> <br/>
 👉<a href="#-autor" style="text-decoration: none"> Autor</a> <br/>
 👉<a href="#user-content--licença" style="text-decoration: none"> Licença</a>
 
@@ -136,7 +137,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
 
-> Veja o arquivo [package.json](https://github.com/grochavieira/DinamicProgrammingProject/blob/master/web/package.json)
+> Veja o arquivo [package.json](https://github.com/grochavieira/DinamicProgrammingProject/blob/master/package.json)
 
 #### **Utilitários**
 
@@ -144,6 +145,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - Fontes: **[Roboto](https://fonts.google.com/specimen/Roboto)**
 
 ---
+
+<a name="-explicacao"></a>
 
 ## 👓 Explicação dos Problemas
 
