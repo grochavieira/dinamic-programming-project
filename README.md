@@ -667,31 +667,31 @@ Como é possível verificar no algoritmo, a parte que mais pesa nele acaba nem s
 function countSumSubsets(arr, x) {
   let matrix = [];
 
-for (let i = 0; i <= arr.length; i++) {
-matrix[i] = [];
-for (let j = 0; j <= x; j++) {
-if (j === 0) {
-matrix[i][j] = 1;
-} else {
-matrix[i][j] = 0;
-}
-}
+  for (let i = 0; i <= arr.length; i++) {
+    matrix[i] = [];
+    for (let j = 0; j <= x; j++) {
+      if (j === 0) {
+      matrix[i][j] = 1;
+      } else {
+      matrix[i][j] = 0;
+      }
+    }
+  }
+
+  for (let i = 1; i <= arr.length; i++) {
+    for (let j = 1; j <= x; j++) {
+      if (j - arr[i - 1] >= 0) {
+        matrix[i][j] = matrix[i - 1]j - arr[i - 1]] + matrix[i - 1][j];
+      } else {
+        matrix[i][j] = matrix[i - 1][j];
+      }
+    }
+  }
+
+  return matrix[arr.length][x];
 }
 
-for (let i = 1; i <= arr.length; i++) {
-for (let j = 1; j <= x; j++) {
-if (j - arr[i - 1] >= 0) {
-matrix[i][j] = matrix[i - 1]j - arr[i - 1]] + matrix[i - 1][j];
-} else {
-matrix[i][j] = matrix[i - 1][j];
-}
-}
-}
-
-return matrix[arr.length][x];
-}
-
-````
+```
 
 <p align="justify">
 Logo a complexidade desse algoritmo é O(N*X), na qual N seria o tamanho do vetor arr, enquanto X seria o valor a ser representado pelos subconjuntos de arr. Infelizmente nesse caso não é possível supor um limite para o pior caso, pois o valor de N pode ser muito superior ao de X, já que podemos inserir valores iguais, pois mesmo que seja realizado um filtro para manter retirar os valores maiores que X, ainda assim seria necessário manter os valores repetidos do vetor arr.
