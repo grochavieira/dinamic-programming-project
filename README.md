@@ -16,7 +16,7 @@
  
 </p>
 <h1 align="center">
-    <img src="assets/logo.png">
+    Projeto de Programação Dinâmica
 </h1>
 
 <h4 align="center"> 
@@ -70,19 +70,19 @@
 ### Exemplo do troco mínimo de moedas em funcionamento:
 
 <p align="center">
-  <img src="imgs/ex1/min_change_example.gif">
+  <img src="assets/ex1/min_change_example.gif">
 </p>
 
 ### Exemplo da contagem de subconjuntos em funcionamento
 
 <p align="center">
-  <img src="imgs/ex2/count_subset_example.gif">
+  <img src="assets/ex2/count_subset_example.gif">
 </p>
 
 ### Exemplo do fibonacci em funcionamento:
 
 <p align="center">
-  <img src="imgs/ex3/fibonacci_example.gif">
+  <img src="assets/ex3/fibonacci_example.gif">
 </p>
 
 ---
@@ -179,7 +179,7 @@ Exemplo: Para o valor V = 6, e C = {4, 3, 1}, a função vai chamar ela mesma, p
 </p>
   
 <p align="center">
-  <img src="imgs/ex1/grafo1.png">
+  <img src="assets/ex1/grafo1.png">
 </p>
 
 <p align="justify">
@@ -187,7 +187,7 @@ Após a realização de cada recursão é feito uma comparação para verificar 
 </p>
 
 <p align="center">
-  <img src="imgs/ex1/grafo-completo.png">
+  <img src="assets/ex1/grafo-completo.png">
 </p>
 
 #### Algoritmo Recursivo
@@ -257,7 +257,7 @@ Ainda utilizando o exemplo do valor V = 6 e C = {4, 3, 1}, é possível perceber
 </p>
 
 <p align="center">
-  <img src="imgs/ex1/grafo-completo-sub-estrutura.png">
+  <img src="assets/ex1/grafo-completo-sub-estrutura.png">
 </p>
 
 <p align="justify">
@@ -426,14 +426,14 @@ Para melhor visualizar essa solução por divisão e conquista, vamos utilizar o
 </p>
 
 <p align="center">
-  <img src="imgs/ex2/grafo1.png">
+  <img src="assets/ex2/grafo1.png">
 </p>
 
 Primeiro é necessário subtrair X do primeiro valor do vetor, ficando 5 - 1 = 4, dessa forma, no próximo caminho sobraram apenas {1, 2, 3, 4} para serem utilizados, na qual cada um deles será utilizado em uma subtração com o nó atual = 4, até o valor de X <= 0 ou então quando não existirem mais valores a serem utilizados, como mostrado no grafo completo dessa resolução abaixo:
 
 <p align="center">
-  <img src="imgs/ex2/grafo_completo_parte1.png">
-  <img src="imgs/ex2/grafo_completo_parte2.png">
+  <img src="assets/ex2/grafo_completo_parte1.png">
+  <img src="assets/ex2/grafo_completo_parte2.png">
 </p>
 
 Assim, basta contar os nós que chegaram ao resultado 0, e ignorar os outros, que teremos a saída do problema, onde nesse caso seria 4, pois temos as saídas: {1, 1, 3}, {1, 4}, {1, 4} e {2, 3}.
@@ -493,8 +493,8 @@ Ainda utilizando o exemplo do arr = {1, 1, 2, 3, 4} e X = 5, é possível perceb
 </p>
 
 <p align="center">
-  <img src="imgs/ex2/grafo_completo_sub_estrutura_parte1.png">
-  <img src="imgs/ex2/grafo_completo_sub_estrutura_parte2.png">
+  <img src="assets/ex2/grafo_completo_sub_estrutura_parte1.png">
+  <img src="assets/ex2/grafo_completo_sub_estrutura_parte2.png">
 </p>
 
 <p align="justify">
@@ -710,7 +710,7 @@ Para resolver o problema de fibonacci por divisão e conquista, basta pegar o va
 </p>
 
 <p align="center">
-  <img src="imgs/ex3/fibonacci_grafo1.png">
+  <img src="assets/ex3/fibonacci_grafo1.png">
 </p>
 
 <p align="justify">
@@ -718,7 +718,7 @@ Como é possível observar no grafo, dependendo do lado que foi definido para se
 </p>
 
 <p align="center">
-  <img src="imgs/ex3/fibonacci_grafo_completo.png">
+  <img src="assets/ex3/fibonacci_grafo_completo.png">
 </p>
 
 Dessa forma, após os dois lados serem solucionados, o resultado deles é somado para obter a solução do Fibonacci(5).
@@ -766,7 +766,7 @@ Ainda utilizando o exemplo anterior para o Fibonacci(5), é possível observar q
 </p>
 
 <p align="center">
-  <img src="imgs/ex3/fibonacci_grafo_completo_subestrutura.png">
+  <img src="assets/ex3/fibonacci_grafo_completo_subestrutura.png">
 </p>
 
 <p align="justify">
