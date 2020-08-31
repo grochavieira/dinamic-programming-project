@@ -1,13 +1,153 @@
-# Desenvolvedores
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/grochavieira/DinamicProgrammingProject?color=%2304D361&style=for-the-badge">
 
-- Guilherme Rocha Vieira RA: 22.118.024-3
-- Thomas Anderson Ferrari RA: 22.118.175-3
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/grochavieira/DinamicProgrammingProject?style=for-the-badge">
+  
+  <a href="https://github.com/grochavieira/DinamicProgrammingProject/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/grochavieira/DinamicProgrammingProject?style=for-the-badge">
+  </a>
+    
+   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?style=for-the-badge">
 
-# Link para o Site
+  <a href="https://github.com/grochavieira">
+    <img alt="Feito por Guilherme Rocha Vieira" src="https://img.shields.io/badge/feito%20por-grochavieira-%237519C1?style=for-the-badge&logo=github">
+  </a>
+  
+ 
+</p>
+<h1 align="center">
+    <img src="assets/logo.png">
+</h1>
 
-https://dinamic-programming-project.netlify.app/
+<h4 align="center"> 
+	🚧  Site Concluído 🚧
+</h4>
 
-# Problema #1 - Menor quantidade de moedas para um valor
+## 🏁 Tópicos
+
+<p>
+ 👉<a href="#-sobre-o-projeto" style="text-decoration: none; "> Sobre</a> <br/>
+👉<a href="#-funcionalidades" style="text-decoration: none; "> Funcionalidades</a> <br/>
+👉<a href="#-layout" style="text-decoration: none"> Layout</a> <br/>
+👉<a href="#-como-executar-o-projeto" style="text-decoration: none"> Como executar</a> <br/>
+👉<a href="#-tecnologias" style="text-decoration: none"> Tecnologias</a> <br/>
+👉<a href="#-autor" style="text-decoration: none"> Autor</a> <br/>
+👉<a href="#user-content--licença" style="text-decoration: none"> Licença</a>
+
+</p>
+
+## 💻 Sobre o projeto
+
+<p align="justify">
+  Essa aplicação foi feita como parte do projeto de Análise e Complexidade de Algoritmos do 5° Semestre de Ciência da Computação, na qual o professor pediu a resolução de 3 problemas em programação dinâmica, como também a forma com a qual foi chegado nessa solução.
+</p>
+
+---
+
+<a name="-funcionalidades"></a>
+
+## ⚙️ Funcionalidades
+
+- [x] Problema do troco mínimo de moedas pode ser resolvido inserindo:
+
+  - [x] Trocado Requisitado;
+  - [x] Moedas Disponíveis.
+
+- [x] Problema da Contagem de Subconjuntos pode ser resolvido inserindo:
+
+  - [x] Um valor X positivo qualquer;
+  - [x] Um vetor que contenha combinações do valor X, preferivelmente, ou não.
+
+- [x] Problema de Fibonacci pode ser resolvido inserindo:
+
+  - [x] Um termo i positivo qualquer;
+
+---
+
+## 🎨 Layout
+
+### Exemplo do troco mínimo de moedas em funcionamento:
+
+<p align="center">
+  <img src="imgs/ex1/min_change_example.gif">
+</p>
+
+### Exemplo da contagem de subconjuntos em funcionamento
+
+<p align="center">
+  <img src="imgs/ex2/count_subset_example.gif">
+</p>
+
+### Exemplo do fibonacci em funcionamento:
+
+<p align="center">
+  <img src="imgs/ex3/fibonacci_example.gif">
+</p>
+
+---
+
+## 🚀 Como executar o projeto
+
+Este projeto contêm uma parte:
+
+1. Frontend
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [Yarn](https://classic.yarnpkg.com/en/docs/install).
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+#### 🧭 Rodando a aplicação web (Frontend)
+
+```bash
+
+# Clone este repositório
+$ git clone https://github.com/grochavieira/DinamicProgrammingProject.git
+
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd DinamicProgrammingProject
+
+# Instale as dependências
+$ yarn install
+
+# Execute a aplicação em modo de desenvolvimento
+$ yarn start
+
+# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
+
+```
+
+#### 🌐 Site Hospedado
+
+Caso queira, não precisa rodar a aplicação web do terminal, basta acessar o link abaixo:
+
+<a align="center" href="https://dinamic-programming-project.netlify.app/">
+    <img alt="Site Hospedado" src="https://img.shields.io/static/v1?label=Site&message=Dinamic-Programming&color=3DA9BC&style=for-the-badge&logo=netlify">
+</a>
+
+---
+
+## 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+#### **Website** ([React](https://reactjs.org/))
+
+- **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
+
+> Veja o arquivo [package.json](https://github.com/grochavieira/DinamicProgrammingProject/blob/master/web/package.json)
+
+#### **Utilitários**
+
+- Editor: **[Visual Studio Code](https://code.visualstudio.com/)**
+- Fontes: **[Roboto](https://fonts.google.com/specimen/Roboto)**
+
+---
+
+## 👓 Explicação dos Problemas
+
+### Problema #1 - Menor quantidade de moedas para um valor
 
 <p align="justify">
 Nesse problema, dado um valor V em reais e supondo que temos quantidade infinitas de moedas C = {C1, C2, C3,...,Cm} com valores distintos, é necessário encontrar a quantidade mínima de moedas que representam o valor V.
@@ -21,7 +161,7 @@ Por exemplo, para V = 62 e C = {25, 4, 3, 1}, precisamos de 2 moedas de 25 e 3 m
 Logo, através desses exemplos é possível verificar que o método por Algoritmos Gulosos é ineficiente, pois somente com determinados exemplos seria possível utilizar ele, como foi no caso do primeiro exemplo, onde bastava escolher as moedas de maior valor para se obter a resposta, contudo, ao adicionar novas moedas para solucionar um mesmo problema V, se o método Guloso ainda fosse utilizado, ele estária errado, já que ele retornaria o mesmo resultado anterior, sendo que utilizando as novas moedas adicionadas seria possível solucionar o problema com menos moedas. Assim, para resolver este problema, foi utilizado os métodos de Programação Dinâmica.
 </p>
 
-## Método da Divisão e Conquista
+#### Método da Divisão e Conquista
 
 <p align="justify">
 Antes de solucionar o problema por Programação Dinâmica, primeiro é necessário resolvê-lo pelo método da Divisão e Conquista, para então encontrar a sub-estrutura ótima e, por fim, desenvolver um algoritmo de maneira bottom-up.
@@ -47,7 +187,7 @@ Após a realização de cada recursão é feito uma comparação para verificar 
   <img src="imgs/ex1/grafo-completo.png">
 </p>
 
-### Algoritmo Recursivo
+#### Algoritmo Recursivo
 
 Para melhor entender como isso funciona na prática, vamos analisar o algoritmo abaixo:
 
@@ -107,7 +247,7 @@ for (let i = 0; i <= coins.length; i++) {
 return result;
 ```
 
-## Sub-Estrutura Ótima
+#### Sub-Estrutura Ótima
 
 <p align="justify">
 Ainda utilizando o exemplo do valor V = 6 e C = {4, 3, 1}, é possível perceber no grafo abaixo que quando o algoritmo recursivo é utilizado, ele acaba resolvendo o mesmo problema inúmeras vezes, como a melhor solução para V = 1 (em azul), que aparece 5 vezes, para V = 2 (em vermelho), que aparece 4 vezes, e para V = 3 (em verde), que aparece 2 vezes:
@@ -121,7 +261,7 @@ Ainda utilizando o exemplo do valor V = 6 e C = {4, 3, 1}, é possível perceber
 Logo, seria interessante armazenar esses valores, para que eles possam ser utilizados sempre que o algoritmo se encontrar em uma situação que já foi resolvida anteriormente, e para isso, será necessário utilizar o método de 'bottom-up'
 </p>
 
-### Método 'bottom-up'
+#### Método 'bottom-up'
 
 <p align="justify">
 Para solucionar esse problema de forma eficiente, precisamos olhar para ele por baixo, para onde os valores começam a ser retornados na função, pois em vez de tentarmos buscar a melhor solução para V logo de cara, é melhor começar a buscar a melhor solução de cada um dos números que antecedem V, e salvar esses resultados, para que eles possam ser utilizados mais tarde em problemas similares, assim, utilizando o exemplo anterior de V = 6, e C = {4, 3, 1}, vamos criar um vetor para armazenar a melhor solução de cada valor que antecede V, começando do 0 e indo até V, que nesse caso é 6, e iniciar todos os valores com 0:
@@ -163,7 +303,7 @@ E assim o mesmo será feito para os valores subsequentes do vetor, até chegar n
 | --- | --- | --- | --- | --- | --- | --- |
 | 0   | 1   | 2   | 1   | 1   | 2   | 2   |
 
-### Algoritmo por Programação Dinâmica
+#### Algoritmo por Programação Dinâmica
 
 Agora vamos analisar o algoritmo por programação dinâmica:
 
@@ -224,12 +364,14 @@ for (let i = 1; i <= change; i++) {
   savedResults[i] = bestCount;
 }
 ```
+
 E, por fim, depois de finalizar o laço principal, a função retorna o melhor resultado para o valor V, que seria a última posição do vetor correspondente ao 'change':
+
 ```javascript
 return savedResults[change];
 ```
 
-## Análise Assintótica
+#### Análise Assintótica
 
 <p align="justify">
 Como é possível verificar no algoritmo, a parte que mais pesa nele é o laço que passa por todas as moedas que está dentro do laço principal que vai de 1 até V: 
@@ -253,18 +395,14 @@ savedResults[i] = bestCount;
 }
 
 ````
+
 <p align="justify">
 Logo a complexidade desse algoritmo é O(V*C), na qual V seria o valor do troco, ou então o valor a ser representado, enquanto C seria o tamanho do vetor que contêm as moedas. No pior caso, onde C = V, a complexidade do algoritmo passa a ser O(V^2), ou então O(n^2), supondo que seja realizado um filtro no vetor que contêm as moedas para retirar os valores que são maiores que o valor de V.
 </p>
 
-## Interface
-Exemplo da interface em funcionamento:
+---
 
-<p align="center">
-  <img src="imgs/ex1/min_change_example.gif">
-</p>
-
-# Problema #2 - Contagem de subconjuntos com soma X
+### Problema #2 - Contagem de subconjuntos com soma X
 
 <p align="justify">
 Nesse problema, dado um vetor arr de tamanho N e um inteiro X, é necessário encontrar a quantidade de subconjuntos de arr que conseguem representar o valor de X.
@@ -274,7 +412,7 @@ Nesse problema, dado um vetor arr de tamanho N e um inteiro X, é necessário en
 Por exemplo, para arr = {1, 1, 2, 3, 4} e X = 5, a saída deverá ser 4, pois nós temos 4 subconjuntos que representam X: {1, 4}, {1, 4}, {2, 3} e {1, 1, 3}. Ou então para arr = {1, 2, 3, 4, 5} e X = 10, a saída deverá ser 3, pois teremos 3 subconjuntos que representam X: {1, 4, 5}, {2, 3, 5} e {1, 2, 3, 4}.
 </p>
 
-## Método da Divisão e Conquista
+#### Método da Divisão e Conquista
 
 <p align="justify">
 Para resolver este problema por divisão e conquista, é necessário pegar o valor de X e subtrair dele cada um dos valores contidos no vetor arr, e para cada caminho subsequente, é necessário descontar do vetor os valores que já foram utilizados, para que não sejam criados caminhos repetidos, por exemplo, para arr = {1, 2, 3, 4} e X = 5, se eu fizer 5 - 1 = 4, para o primeiro caminho, no caminho gerado a partir dele eu não poderei usar o 1 novamente, os únicos que eu poderei usar são os valores {2, 3, 4}, e então isso é feito até o valor inicial de X = 0, o que significa que foi encontrado um subconjunto capaz de representar X, logo contar esse caminho para encontrar a solução final, e no caso de X < 0 esse caminho é descartado.
@@ -297,7 +435,7 @@ Primeiro é necessário subtrair X do primeiro valor do vetor, ficando 5 - 1 = 4
 
 Assim, basta contar os nós que chegaram ao resultado 0, e ignorar os outros, que teremos a saída do problema, onde nesse caso seria 4, pois temos as saídas: {1, 1, 3}, {1, 4}, {1, 4} e {2, 3}.
 
-### Algoritmo Recursivo
+#### Algoritmo Recursivo
 
 Para melhor entender como isso funciona na prática, vamos analisar o algoritmo abaixo:
 
@@ -345,7 +483,7 @@ Por fim a função retorna o valor do contador count, que será utilizado quando
 return count;
 ```
 
-## Sub-Estrutura Ótima
+#### Sub-Estrutura Ótima
 
 <p align="justify">
 Ainda utilizando o exemplo do arr = {1, 1, 2, 3, 4} e X = 5, é possível perceber no grafo da resolução abaixo, que ele acaba resolvendo o mesmo problema até 4 vezes, sendo eles 4-4, 4-3, 4-2 e 3-3, nesse caso é importante notar que ambos os nós 4 não são iguais, logo não seria possível considerá-los como uma resolução só, pois enquanto o primeiro nó 4, mais pra esquerda, tem 4 caminhos diferentes que pode seguir, o nó 4, mais pra direita, tem apenas 3:
@@ -360,7 +498,7 @@ Ainda utilizando o exemplo do arr = {1, 1, 2, 3, 4} e X = 5, é possível perceb
 Logo, é necessário armazenar esses valores para criar uma solução por programação dinâmica.
 </p>
 
-### Método 'bottom-up'
+#### Método 'bottom-up'
 
 <p align="justify">
 Para solucionar esse problema de forma eficiente, precisamos solucioná-lo primeiro por baixo, para depois ir caminhando até o problema que precisa ser resolvido utilizando os valores dos problemas já solucionados. Portanto, para resolver esse problema vamos utilizar o mesmo exemplo anterior, arr = {1, 1, 2, 3, 4} e X = 5, além disso, nós precisamos criar uma matriz com X colunas e N linhas, iniciando do 0, na qual N seria o tamanho do vetor arr, zerando todos os seus elementos, com excessão de todas as colunas na posição 0:
@@ -440,7 +578,7 @@ Dessa forma, se olharmos para a última linha e coluna do vetor, nós obtemos a 
 | 4(2) | 1   | 1   | 1   | 2   | 2   | 2   |
 | 5(1) | 1   | 2   | 2   | 3   | 4   | 4   |
 
-### Algoritmo por Programação Dinâmica
+#### Algoritmo por Programação Dinâmica
 
 Agora vamos analisar o algoritmo por programação dinâmica:
 
@@ -516,7 +654,7 @@ Por fim, ele retorna o valor da última linha e coluna, que contém a saída do 
 return matrix[arr.length][x];
 ```
 
-## Análise Assintótica
+#### Análise Assintótica
 
 <p align="justify">
 Como é possível verificar no algoritmo, a parte que mais pesa nele acaba nem sendo o laço principal que soluciona o problema, e sim o primeiro laço responsável por criar e inicializar a matriz:
@@ -526,48 +664,44 @@ Como é possível verificar no algoritmo, a parte que mais pesa nele acaba nem s
 function countSumSubsets(arr, x) {
   let matrix = [];
 
-  for (let i = 0; i <= arr.length; i++) {
-    matrix[i] = [];
-    for (let j = 0; j <= x; j++) {
-      if (j === 0) {
-        matrix[i][j] = 1;
-      } else {
-        matrix[i][j] = 0;
-      }
-    }
-  }
+for (let i = 0; i <= arr.length; i++) {
+matrix[i] = [];
+for (let j = 0; j <= x; j++) {
+if (j === 0) {
+matrix[i][j] = 1;
+} else {
+matrix[i][j] = 0;
+}
+}
+}
 
-  for (let i = 1; i <= arr.length; i++) {
-    for (let j = 1; j <= x; j++) {
-      if (j - arr[i - 1] >= 0) {
-        matrix[i][j] = matrix[i - 1][j - arr[i - 1]] + matrix[i - 1][j];
-      } else {
-        matrix[i][j] = matrix[i - 1][j];
-      }
-    }
-  }
+for (let i = 1; i <= arr.length; i++) {
+for (let j = 1; j <= x; j++) {
+if (j - arr[i - 1] >= 0) {
+matrix[i][j] = matrix[i - 1]j - arr[i - 1]] + matrix[i - 1][j];
+} else {
+matrix[i][j] = matrix[i - 1][j];
+}
+}
+}
 
-  return matrix[arr.length][x];
+return matrix[arr.length][x];
 }
 
 ````
+
 <p align="justify">
 Logo a complexidade desse algoritmo é O(N*X), na qual N seria o tamanho do vetor arr, enquanto X seria o valor a ser representado pelos subconjuntos de arr. Infelizmente nesse caso não é possível supor um limite para o pior caso, pois o valor de N pode ser muito superior ao de X, já que podemos inserir valores iguais, pois mesmo que seja realizado um filtro para manter retirar os valores maiores que X, ainda assim seria necessário manter os valores repetidos do vetor arr.
 </p>
 
-## Interface
-Exemplo da interface em funcionamento:
+---
 
-<p align="center">
-  <img src="imgs/ex2/count_subset_example.gif">
-</p>
-
-# Problema #3 - Fibonacci
+### Problema #3 - Fibonacci
 <p align="justify">
 A sequência de Fibonacci é formada a partir de dois números iniciais, 0 e 1, e todos os números subsequentes são formados a partir desses dois números dentro de uma equação recursiva, ou seja, para encontrar o valor de um número de fibonacci é necessário somar o valor dos dois anteriores, que por sua vez também são formados pelos seus anteriores, por exemplo, para o fibonacci de 4 é necessário conhecer os valores dos fibonaccis de 3 e de 2, que por sua vez também é necessário conhecer os fibonaccis que os antecedem, logo, se partirmos do inicio onde conhecemos o valor do fibonacci de 0 e de 1, teriamos a sequência 0, 1, 1, 2, 3, onde o fibonacci(4) = 3, que seria a soma do fibonacci(3) + fibonacci(2) = 2 + 1 = 3.
 </p>
 
-## Método da Divisão e Conquista
+#### Método da Divisão e Conquista
 <p align="justify">
 Para resolver o problema de fibonacci por divisão e conquista, basta pegar o valor do termo que deseja ser encontrado e subtrair 2 e 1 do termo principal, pois, por exemplo para o termo i = 5, nós teríamos uma fórmula da seguinte forma: Fibonacci(5) = Fibonacci(4) + Fibonacci(3), pois o valor do termo é encontrado através da soma dos dois termos anteriores, porém como não temos o valor do Fibonacci(4) e Fibonacci(3) o ideal seria utilizar o mesmo método para os dois, até chegarmos no caso base, quando nós temos Fibonacci(1) e Fibonacci(0), pois o valor desses dois nós já temos, e basta retornar os valores até chegar no problema principal, para melhor visualizar esse problema, vamos olhar o grafo abaixo:
 </p>
@@ -586,7 +720,7 @@ Como é possível observar no grafo, dependendo do lado que foi definido para se
 
 Dessa forma, após os dois lados serem solucionados, o resultado deles é somado para obter a solução do Fibonacci(5).
 
-### Algoritmo por Divisão e Conquista
+#### Algoritmo por Divisão e Conquista
 
 Para melhor entender como isso funciona na prática, vamos analisar o algoritmo abaixo:
 
@@ -622,7 +756,7 @@ E depois nós temos o retorno da função que devolve a solução do problema, p
 return findFibonacci(x - 1) + findFibonacci(x - 2);
 ```
 
-## Sub-Estrutura Ótima
+#### Sub-Estrutura Ótima
 
 <p align="justify">
 Ainda utilizando o exemplo anterior para o Fibonacci(5), é possível observar que o lado esquerdo do grafo, que foi gerado para descobrir o Fibonacci(3), é exatamente igual ao Fibonacci(3) solucionado no lado direito, assim como o caminho gerado para descobrir o Fibonacci(2), usado para encontrar o valor do Fibonacci(4), é exatamente igual ao do Fibonacci(2) usado para encontrar o valor do Fibonacci(3), como é possível observar abaixo nas áreas contornadas:
@@ -636,7 +770,7 @@ Ainda utilizando o exemplo anterior para o Fibonacci(5), é possível observar q
 Logo, seria mais eficiente armazenar esse valores dentro de um vetor para que não haja necessidade de solucioná-los novamente, e então criar uma solução em programação dinâmica.
 </p>
 
-### Método 'bottom-up'
+#### Método 'bottom-up'
 
 <p align="justify">
 Para solucionar esse problema por programação dinâmica precisamos começar resolvendo ele por baixo, até chegar no problema principal, e principalmente utilizar as soluções já encontradas para solucionar as próximas que dependem delas. Assim, vamos resolver o fibonacci(5) como exemplificação. Primeiro precisamos de um vetor, que tenha no mínimo o tamanho do termo a ser encontrado + 1, já que ele inicia do 0, além disso é essencial inicializar a posição 0 do vetor com 0, e a posição 1 do vetor com 1, como mostrado abaixo:
@@ -674,7 +808,7 @@ Para o Fibonacci(4) teremos que somar a posição 2 e 3 do vetor, e inserir seu 
 E como é possível observar, essa forma é bem mais eficiente, pois não existe a necessidade de resolver o mesmo problema para chegar na solução final, como acontecia pelo método da divisão e conquista.
 </p>
 
-### Algoritmo por Programação Dinâmica
+#### Algoritmo por Programação Dinâmica
 
 Agora vamos analisar o algoritmo por programação dinâmica:
 
@@ -720,7 +854,7 @@ Por fim nós temos o retorno da função que retorna o valor do Fibonacci(x), as
 return array[x];
 ```
 
-## Análise Assintótica
+#### Análise Assintótica
 
 <p align="justify">
 Como é possível verificar no algoritmo, a parte que mais pesa nele é o laço utilizado para encontrar os termos de Fibonacci maiores que 1: 
@@ -745,10 +879,31 @@ return array[x];
 Logo a complexidade desse algoritmo é O(x), ou então O(n), na qual x é termo de Fibonacci a ser encontrado, que seria o ponto de parada das iterações realizadas no laço, pois apesar do laço iniciar no 2, não existe complexidade O(x-2) já que precisamos desconsiderar as constantes.
 </p>
 
-## Interface
-Exemplo da interface em funcionamento:
 
-<p align="center">
-  <img src="imgs/ex3/fibonacci_example.gif">
+---
+
+<a name="-autor"></a>
+
+## 🦸‍♂️ **Autor**
+
+<p>
+<kbd>
+ <img src="https://avatars1.githubusercontent.com/u/48029638?s=460&u=f8d11a7aa9ce76a782ef140a075c5c81be878f00&v=4" width="150px;" alt=""/>
+ </kbd>
+ <br />
+ <sub><strong>🌟 Guilherme Rocha Vieira 🌟</strong></sub>
 </p>
+
+[![Linkedin Badge](https://img.shields.io/badge/-Guilherme-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grochavieira/)](https://www.linkedin.com/in/grochavieira/)
+[![Gmail Badge](https://img.shields.io/badge/-guirocha.hopeisaba@gmail.com-c14438?style=for-the-badge&logo=Gmail&logoColor=white&link=mailto:guirocha.hopeisaba@gmail.com)](mailto:guirocha.hopeisaba@gmail.com)
+
+---
+
+## 📝 Licença
+
+Este projeto esta sobe a licença [MIT](./LICENSE).
+
+Feito com :satisfied: por Guilherme Rocha Vieira 👋🏽 [Entre em contato!](https://www.linkedin.com/in/grochavieira/)
+
+---
 ```
