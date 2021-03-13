@@ -1,10 +1,10 @@
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/grochavieira/DinamicProgrammingProject?color=%2304D361&style=for-the-badge">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/grochavieira/dinamic-programming-project?color=%2304D361&style=for-the-badge">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/grochavieira/DinamicProgrammingProject?style=for-the-badge">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/grochavieira/dinamic-programming-project?style=for-the-badge">
   
-  <a href="https://github.com/grochavieira/DinamicProgrammingProject/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/grochavieira/DinamicProgrammingProject?style=for-the-badge">
+  <a href="https://github.com/grochavieira/dinamic-programming-project/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/grochavieira/dinamic-programming-project?style=for-the-badge">
   </a>
     
    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?style=for-the-badge">
@@ -104,10 +104,10 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 ```bash
 
 # Clone este repositório
-$ git clone https://github.com/grochavieira/DinamicProgrammingProject.git
+$ git clone https://github.com/grochavieira/dinamic-programming-project.git
 
 # Acesse a pasta do projeto no seu terminal/cmd
-$ cd DinamicProgrammingProject
+$ cd dinamic-programming-project
 
 # Instale as dependências
 $ yarn install
@@ -137,7 +137,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
 
-> Veja o arquivo [package.json](https://github.com/grochavieira/DinamicProgrammingProject/blob/master/package.json)
+> Veja o arquivo [package.json](https://github.com/grochavieira/dinamic-programming-project/blob/master/package.json)
 
 #### **Utilitários**
 
@@ -667,31 +667,31 @@ Como é possível verificar no algoritmo, a parte que mais pesa nele acaba nem s
 function countSumSubsets(arr, x) {
   let matrix = [];
 
-  for (let i = 0; i <= arr.length; i++) {
-    matrix[i] = [];
-    for (let j = 0; j <= x; j++) {
-      if (j === 0) {
-      matrix[i][j] = 1;
-      } else {
-      matrix[i][j] = 0;
-      }
-    }
-  }
-
-  for (let i = 1; i <= arr.length; i++) {
-    for (let j = 1; j <= x; j++) {
-      if (j - arr[i - 1] >= 0) {
-        matrix[i][j] = matrix[i - 1]j - arr[i - 1]] + matrix[i - 1][j];
-      } else {
-        matrix[i][j] = matrix[i - 1][j];
-      }
-    }
-  }
-
-  return matrix[arr.length][x];
+for (let i = 0; i <= arr.length; i++) {
+matrix[i] = [];
+for (let j = 0; j <= x; j++) {
+if (j === 0) {
+matrix[i][j] = 1;
+} else {
+matrix[i][j] = 0;
+}
+}
 }
 
-```
+for (let i = 1; i <= arr.length; i++) {
+for (let j = 1; j <= x; j++) {
+if (j - arr[i - 1] >= 0) {
+matrix[i][j] = matrix[i - 1]j - arr[i - 1]] + matrix[i - 1][j];
+} else {
+matrix[i][j] = matrix[i - 1][j];
+}
+}
+}
+
+return matrix[arr.length][x];
+}
+
+````
 
 <p align="justify">
 Logo a complexidade desse algoritmo é O(N*X), na qual N seria o tamanho do vetor arr, enquanto X seria o valor a ser representado pelos subconjuntos de arr. Infelizmente nesse caso não é possível supor um limite para o pior caso, pois o valor de N pode ser muito superior ao de X, já que podemos inserir valores iguais, pois mesmo que seja realizado um filtro para manter retirar os valores maiores que X, ainda assim seria necessário manter os valores repetidos do vetor arr.
